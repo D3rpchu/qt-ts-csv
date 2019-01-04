@@ -1,3 +1,5 @@
+#include "csvwriter.hpp"
+
 #include <rapidxml-1.13/rapidxml.hpp>
 
 #include <fstream>
@@ -150,7 +152,7 @@ int main(int argc,  char **argv)
         }
     }
 
-    std::ofstream file_output("output.csv");
-    file_output.write(oss.str().c_str(), oss.str().size());
-    file_output.close();
+
+    CSVWriter csvw;
+    csvw.do_it("output.csv", std::move(oss));
 }
