@@ -138,6 +138,18 @@ int main(int argc,  char **argv)
 
     oss << std::endl;
 
+    for (const auto &c : csv) {
+        for (const auto &t : c.translations) {
+            oss << c.name << sep;
+            oss << t.source << sep;
+            oss << t.tr << sep;
+            for (const auto &p : t.locations) {
+                oss << p.path << " - " << p.line << sep;
+            }
+            oss << std::endl;
+        }
+    }
+
     std::ofstream file_output("output.csv");
     file_output.write(oss.str().c_str(), oss.str().size());
     file_output.close();
