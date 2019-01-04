@@ -1,6 +1,7 @@
 #include <rapidxml-1.13/rapidxml.hpp>
 
 #include <fstream>
+#include <ostream>
 #include <sstream>
 #include <iostream>
 #include <vector>
@@ -115,4 +116,29 @@ int main(int argc,  char **argv)
         std::cout << std::endl;
         std::cout << std::endl;
     }
+
+    unsigned short max_locations = 0;
+    for (const auto &c : csv) {
+        if (c.translations.front().locations.size() > max_locations) {
+            max_locations = c.translations.front().locations.size();
+        }
+    }
+
+    constexpr auto sep = ";";
+
+    std::ostringstream oss;
+    oss << "context" << sep
+        << "source" << sep
+        << "translation" << sep
+        << "location" << sep;
+
+    for (int var = 0; var < max_locations; ++var) {
+        oss << "location" << var << sep;
+    }
+
+    oss << std::endl;
+
+    std::ofstream file_output("output.csv");
+    file_output.write(oss.str().c_str(), oss.str().size());
+    file_output.close();
 }
