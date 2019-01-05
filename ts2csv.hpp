@@ -1,14 +1,12 @@
 #pragma once
 
-#include <string>
+#include "converter.hpp"
 
-class Ts2Csv
+class Ts2Csv : public Converter
 {
 public:
+    Ts2Csv() = delete;
     explicit Ts2Csv(std::string &&filename);
 
-    void convert() const;
-
-private:
-    std::string filename;
+    void convert() override;
 };
