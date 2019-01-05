@@ -8,7 +8,8 @@ SOURCES += \
     csvwriter.cpp \
     tsreader.cpp \
     tsparser.cpp \
-    csvbuilder.cpp
+    csvbuilder.cpp \
+    ts2csv.cpp
 
 HEADERS += \
     rapidxml-1.13/rapidxml.hpp \
@@ -19,4 +20,5 @@ HEADERS += \
     tsreader.hpp \
     tspod.hpp \
     tsparser.hpp \
-    csvbuilder.hpp
+    csvbuilder.hpp \
+    ts2csv.hpp

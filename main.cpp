@@ -1,7 +1,4 @@
-#include "csvwriter.hpp"
-#include "tsreader.hpp"
-#include "tsparser.hpp"
-#include "csvbuilder.hpp"
+#include "ts2csv.hpp"
 
 #include <iostream>
 
@@ -18,15 +15,13 @@ int main(int argc,  char **argv)
         return 0;
     }
 
-    TSReader tsr;
-    auto file_content = tsr.do_it(std::move(file));
+    if (file.find(".ts") != std::string::npos) {
+        std::cout << "converting file " << file << " in csv" << std::endl;
+        Ts2Csv ts2csv(std::move(file));
+        ts2csv.convert();
+    }
 
-    TsParser tsp;
-    const auto ts = tsp.do_it(std::move(file_content));
+    std::cout << "terminated" << std::endl;
 
-    CSVBuilder csvb;
-    auto oss = csvb.build(ts, tsp.get_max_locations());
-
-    CSVWriter csvw;
-    csvw.do_it("output.csv", std::move(oss));
+    return 0;
 }

@@ -2,7 +2,7 @@
 
 #include <fstream>
 
-std::string TSReader::do_it(std::string &&filename) const
+std::string TSReader::do_it(const std::string &filename) const
 {
     std::ifstream ifs;
     ifs.open(std::move(filename));
