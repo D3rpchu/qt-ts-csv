@@ -6,7 +6,9 @@ CONFIG -= qt
 SOURCES += \
     main.cpp \
     csvwriter.cpp \
-    tsreader.cpp
+    tsreader.cpp \
+    tsparser.cpp \
+    csvbuilder.cpp
 
 HEADERS += \
     rapidxml-1.13/rapidxml.hpp \
@@ -14,4 +16,7 @@ HEADERS += \
     rapidxml-1.13/rapidxml_print.hpp \
     rapidxml-1.13/rapidxml_utils.hpp \
     csvwriter.hpp \
-    tsreader.hpp
+    tsreader.hpp \
+    tspod.hpp \
+    tsparser.hpp \
+    csvbuilder.hpp
