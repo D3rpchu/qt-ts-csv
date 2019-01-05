@@ -1,4 +1,5 @@
 #include "csvwriter.hpp"
+#include "tsreader.hpp"
 
 #include <rapidxml-1.13/rapidxml.hpp>
 
@@ -44,16 +45,11 @@ int main(int argc,  char **argv)
         return 0;
     }
 
-    std::ifstream ifs;
-    ifs.open(file);
-    std::string all;
-    std::string line;
-    while (std::getline(ifs, line)) {
-        all += line;
-    }
+    TSReader tsr;
+    const auto file_content = tsr.do_it(std::move(file));
 
     rapidxml::xml_document<> doc;
-    doc.parse<0>(const_cast<char *>(all.c_str()));
+    doc.parse<0>(const_cast<char *>(file_content.c_str()));
 
     std::vector<Context> csv;
 
