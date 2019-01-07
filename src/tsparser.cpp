@@ -9,6 +9,8 @@ TsPOD TsParser::do_it(std::string &&content)
 
     TsPOD ret;
     auto node = doc.first_node();
+    ret.version = node->first_attribute()->value();
+    ret.language = node->first_attribute()->next_attribute()->value();
     while (node != nullptr) {
         auto bro = node->first_node();
         while (bro != nullptr) {

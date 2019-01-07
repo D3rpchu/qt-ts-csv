@@ -17,18 +17,30 @@ std::ostringstream CSVBuilder::build(const TsPOD &ts,
         oss << "location" << var << sep;
     }
 
-    oss << std::endl;
+    oss << "version" << sep
+        << "language" << sep
+        << std::endl;
 
+    bool write_ver = true;
     for (const auto &c : ts) {
-        for (const auto &t : c.translations) {
+        for (const auto &d : c.translations) {
             oss << c.name << sep;
-            oss << t.source << sep;
-            oss << t.tr << sep;
-            for (const auto &p : t.locations) {
-                oss << p.path << " - " << p.line << sep;
+            oss << d.source << sep;
+            oss << d.tr << sep;
+            for (unsigned short j = 0; j < max_locations; ++j) {
+                if (j <= d.locations.size() - 1) {
+                    oss << d.locations[j].path << " - " << d.locations[j].line;
+                }
+                oss << sep;
             }
-            oss << std::endl;
+            if (write_ver) {
+                write_ver = false;
+                oss << ts.version << sep << ts.language << std::endl;
+            } else {
+                oss << sep << sep << std::endl;
+            }
         }
     }
+
     return oss;
 }

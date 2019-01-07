@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include<vector>
+#include <vector>
 
 class Location
 {
@@ -26,4 +26,8 @@ public:
 };
 
 class TsPOD : public std::vector<Context>
-{};
+{
+public:
+    std::string language;
+    std::string version;
+};
