@@ -4,29 +4,29 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    main.cpp \
-    writer.cpp \
-    reader.cpp \
-    tsparser.cpp \
-    csvbuilder.cpp \
-    ts2csv.cpp \
-    csv2ts.cpp \
-    converter.cpp \
-    csvparser.cpp \
-    tsbuilder.cpp
+    src/main.cpp \
+    src/writer.cpp \
+    src/reader.cpp \
+    src/tsparser.cpp \
+    src/csvbuilder.cpp \
+    src/ts2csv.cpp \
+    src/csv2ts.cpp \
+    src/converter.cpp \
+    src/csvparser.cpp \
+    src/tsbuilder.cpp
 
 HEADERS += \
-    rapidxml-1.13/rapidxml.hpp \
-    rapidxml-1.13/rapidxml_iterators.hpp \
-    rapidxml-1.13/rapidxml_print.hpp \
-    rapidxml-1.13/rapidxml_utils.hpp \
-    writer.hpp \
-    reader.hpp \
-    tspod.hpp \
-    tsparser.hpp \
-    csvbuilder.hpp \
-    ts2csv.hpp \
-    csv2ts.hpp \
-    converter.hpp \
-    csvparser.hpp \
-    tsbuilder.hpp
+    src/rapidxml-1.13/rapidxml.hpp \
+    src/rapidxml-1.13/rapidxml_iterators.hpp \
+    src/rapidxml-1.13/rapidxml_print.hpp \
+    src/rapidxml-1.13/rapidxml_utils.hpp \
+    src/writer.hpp \
+    src/reader.hpp \
+    src/tspod.hpp \
+    src/tsparser.hpp \
+    src/csvbuilder.hpp \
+    src/ts2csv.hpp \
+    src/csv2ts.hpp \
+    src/converter.hpp \
+    src/csvparser.hpp \
+    src/tsbuilder.hpp

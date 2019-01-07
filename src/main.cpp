@@ -1,5 +1,5 @@
 #include "ts2csv.hpp"
-#include <csv2ts.hpp>
+#include "csv2ts.hpp"
 
 #include <iostream>
 

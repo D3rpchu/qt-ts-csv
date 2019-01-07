@@ -1,6 +1,6 @@
 #include "tsparser.hpp"
 
-#include <rapidxml-1.13/rapidxml.hpp>
+#include "rapidxml-1.13/rapidxml.hpp"
 
 TsPOD TsParser::do_it(std::string &&content)
 {
@@ -72,7 +72,7 @@ void TsParser::find_max_locations(const TsPOD &ts)
 {
     for (const auto &c : ts) {
         if (c.translations.front().locations.size() > max_locations) {
-            max_locations = c.translations.front().locations.size();
+            max_locations = static_cast<unsigned short>(c.translations.front().locations.size());
         }
     }
 }
