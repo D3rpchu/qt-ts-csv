@@ -16,8 +16,10 @@ std::ostringstream TsBuilder::build() const
     rapidxml::xml_document<> doc;
 
     auto root = doc.allocate_node(rapidxml::node_element, "TS");
-    root->append_attribute(doc.allocate_attribute("version", "2.1"));
-    root->append_attribute(doc.allocate_attribute("language", "en_GB"));
+    const auto v = doc.allocate_string(pod.version.c_str());
+    root->append_attribute(doc.allocate_attribute("version", v));
+    const auto l = doc.allocate_string(pod.language.c_str());
+    root->append_attribute(doc.allocate_attribute("language", l));
     doc.append_node(root);
 
     for (const auto &d : pod) {

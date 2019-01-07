@@ -5,6 +5,7 @@
 #include <iterator>
 
 enum Row { Context, Source, Translation, Path };
+enum ExtraRows { Language, Version, Max };
 
 template <class Container>
 void split1(const std::string& str, Container& cont)
@@ -28,7 +29,7 @@ TsPOD CsvParser::parse(std::string &&content) const
         Traslation t;
         t.source = tokens.at(Source);
         t.tr = tokens.at(Translation);
-        for (size_t var = Path; var < tokens.size(); ++var) {
+        for (size_t var = Path; var < tokens.size() - ExtraRows::Max; ++var) {
             if (tokens.at(var).empty()) {
                 break;
             }	
@@ -38,6 +39,11 @@ TsPOD CsvParser::parse(std::string &&content) const
             l.path = chunks.front();
             l.line = static_cast<unsigned>(stoi(chunks.back()));
             t.locations.emplace_back(std::move(l));
+        }
+
+        if (l == lines.front()) {
+            ret.language = tokens.at(tokens.size() - 1 - ExtraRows::Language);
+            ret.version = tokens.at(tokens.size() - 1 - ExtraRows::Version);
         }
 
         if (old_context == tokens.at(Context)) {
