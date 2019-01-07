@@ -2,7 +2,7 @@
 
 #include "tspod.hpp"
 
-static constexpr auto sep = ";";
+static const char sep[] = ";";
 
 std::ostringstream CSVBuilder::build(const TsPOD &ts,
                                      unsigned short max_locations) const
@@ -32,5 +32,3 @@ std::ostringstream CSVBuilder::build(const TsPOD &ts,
     }
     return oss;
 }
-
-static_assert (sep == std::string_view(";"), "why separator has changed?");

@@ -19,14 +19,14 @@ TsPOD TsParser::do_it(std::string &&content)
                 auto att = child->first_node();
                 Traslation t;
                 while (att != nullptr) {
-                    if (att->name() == std::string_view("location")) {
+                    if (att->name() == std::string("location")) {
                         Location loc;
                         loc.path = att->first_attribute()->value();
                         loc.line = std::stoi(att->first_attribute()->next_attribute()->value());
                         t.locations.emplace_back(std::move(loc));
                     } else {
-                        if (att->name() != std::string_view("")) {
-                            if (att->name() == std::string_view("source")) {
+                        if (att->name() != std::string("")) {
+                            if (att->name() == std::string("source")) {
                                 t.source = att->value();
                             } else {
                                 t.tr = att->value();
