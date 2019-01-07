@@ -3,7 +3,7 @@
 #include "reader.hpp"
 #include "tsparser.hpp"
 #include "csvbuilder.hpp"
-#include "csvwriter.hpp"
+#include "writer.hpp"
 
 Ts2Csv::Ts2Csv(std::string &&filename)
     : Converter{std::move(filename)}
@@ -19,6 +19,6 @@ void Ts2Csv::convert()
     CSVBuilder csvb;
     auto oss = csvb.build(ts, tsp.get_max_locations());
 
-    CSVWriter csvw;
-    csvw.do_it("output.csv", std::move(oss));
+    Writer w("output.csv");
+    w.write(std::move(oss));
 }

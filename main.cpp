@@ -1,4 +1,5 @@
 #include "ts2csv.hpp"
+#include <csv2ts.hpp>
 
 #include <iostream>
 
@@ -22,7 +23,8 @@ int main(int argc,  char **argv)
         ts2csv.convert();
     } else {
         std::cout << " in ts" << std::endl;
-
+        Csv2Ts csv2ts(std::move(file));
+        csv2ts.convert();
     }
 
     std::cout << "terminated" << std::endl;

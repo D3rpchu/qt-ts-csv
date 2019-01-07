@@ -4,7 +4,8 @@
 
 static constexpr auto sep = ";";
 
-std::ostringstream CSVBuilder::build(const TsPOD &ts, unsigned short max_locations) const
+std::ostringstream CSVBuilder::build(const TsPOD &ts,
+                                     unsigned short max_locations) const
 {
     std::ostringstream oss;
     oss << "context" << sep
@@ -12,7 +13,7 @@ std::ostringstream CSVBuilder::build(const TsPOD &ts, unsigned short max_locatio
         << "translation" << sep
         << "location" << sep;
 
-    for (int var = 0; var < max_locations; ++var) {
+    for (int var = 0; var < max_locations - 1; ++var) {
         oss << "location" << var << sep;
     }
 

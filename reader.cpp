@@ -16,6 +16,7 @@ std::string Reader::read() const
     std::string line;
     while (std::getline(ifs, line)) {
         all += line;
+        all += "\n";
     }
     return all;
 }
