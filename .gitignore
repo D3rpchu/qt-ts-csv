@@ -31,3 +31,7 @@
 *.out
 *.app
 *.pro.user*
+.vs/*
+qt-ts-csv.sln
+qt-ts-csv.vcxproj.filters
+qt-ts-csv.vcxproj.user
