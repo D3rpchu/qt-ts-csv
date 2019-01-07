@@ -31,7 +31,7 @@ TsPOD CsvParser::parse(std::string &&content) const
         for (size_t var = Path; var < tokens.size(); ++var) {
             if (tokens.at(var).empty()) {
                 break;
-            }
+            }	
             std::vector<std::string> chunks;
             split1(tokens.at(var), chunks);
             Location l;
@@ -46,8 +46,8 @@ TsPOD CsvParser::parse(std::string &&content) const
             class Context c;
             c.name = tokens.at(Context);
             c.translations.emplace_back(std::move(t));
+			old_context = c.name;
             ret.emplace_back(std::move(c));
-            old_context = c.name;
         }
     }
 
