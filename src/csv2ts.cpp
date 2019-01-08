@@ -2,7 +2,6 @@
 
 #include "csvparser.hpp"
 #include "tsbuilder.hpp"
-#include "writer.hpp"
 
 #include <sstream>
 

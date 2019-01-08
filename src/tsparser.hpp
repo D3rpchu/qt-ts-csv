@@ -9,5 +9,5 @@ public:
 
 private:
     void delete_empty_translations(TsPOD *ts) const;
-    unsigned short find_max_locations(const TsPOD &ts);
+    uint16_t find_max_locations(const TsPOD &ts);
 };

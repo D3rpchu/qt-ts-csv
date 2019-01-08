@@ -1,8 +1,8 @@
 #include "csvparser.hpp"
 
-#include <sstream>
 #include <algorithm>
 #include <iterator>
+#include <sstream>
 
 enum Row { Context, Source, Translation, Path };
 enum ExtraRows { Language, Version, Max };
@@ -45,7 +45,7 @@ TsPOD CsvParser::parse(std::string &&content) const
             ret.language = tokens.at(tokens.size() - 1 - ExtraRows::Language);
             ret.language.erase(0, 1);
             ret.version = tokens.at(tokens.size() - 1 - ExtraRows::Version);
-            ret.version = ret.version.substr(ret.version.find("\"") + 1);
+            ret.version = ret.version.substr(ret.version.find('\"') + 1);
         }
 
         if (old_context == tokens.at(Context)) {

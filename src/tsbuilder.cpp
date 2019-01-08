@@ -3,9 +3,9 @@
 #include "rapidxml-1.13/rapidxml.hpp"
 #include "rapidxml-1.13/rapidxml_print.hpp"
 
-#include <sstream>
-#include <iostream>
 #include <fstream>
+#include <iostream>
+#include <sstream>
 
 std::ostringstream TsBuilder::build(TsPOD &&pod) const
 {

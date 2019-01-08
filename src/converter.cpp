@@ -5,7 +5,7 @@
 
 #include <sstream>
 
-void Converter::convert(std::string &&filename)
+void Converter::convert(std::string &&filename, std::string &&output)
 {
-    Writer().write(process(Reader().read(std::move(filename))), "output.csv");
+    Writer().write(process(Reader().read(std::move(filename))), std::move(output));
 }

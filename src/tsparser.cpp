@@ -24,7 +24,8 @@ TsPOD TsParser::parse(std::string &&content)
                     if (att->name() == std::string("location")) {
                         Location loc;
                         loc.path = att->first_attribute()->value();
-                        loc.line = std::stoi(att->first_attribute()->next_attribute()->value());
+                        const auto v = att->first_attribute()->next_attribute()->value();
+                        loc.line = static_cast<uint16_t>(std::stoi(v));
                         t.locations.emplace_back(std::move(loc));
                     } else {
                         if (att->name() != std::string("")) {
@@ -57,7 +58,8 @@ void TsParser::delete_empty_translations(TsPOD *ts) const
         size_t i = 0;
         while (i < c.translations.size()) {
             if (c.translations[i].locations.empty()) {
-                c.translations.erase(c.translations.begin() + i);
+                c.translations.erase(c.translations.begin() +
+                                     static_cast<int64_t>(i));
                 continue;
             }
             ++i;
@@ -65,12 +67,12 @@ void TsParser::delete_empty_translations(TsPOD *ts) const
     }
 }
 
-unsigned short TsParser::find_max_locations(const TsPOD &ts)
+uint16_t TsParser::find_max_locations(const TsPOD &ts)
 {
-    unsigned short ret = 0;
+    uint16_t ret = 0;
     for (const auto &c : ts) {
         if (c.translations.front().locations.size() > ts.max_locations) {
-            ret = static_cast<unsigned short>(c.translations.front().locations.size());
+            ret = static_cast<uint16_t>(c.translations.front().locations.size());
         }
     }
     return ret;

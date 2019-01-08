@@ -2,22 +2,20 @@
 
 #include "tspod.hpp"
 
-static const char sep[] = ";";
-
-void replace_all(std::string &str, const std::string &from,
+void replace_all(std::string *str, const std::string &from,
                  const std::string &to)
 {
     if (from.empty()) { return; }
     size_t start_pos = 0;
-    while ((start_pos = str.find(from, start_pos)) != std::string::npos) {
-        str.replace(start_pos, from.length(), to);
+    while ((start_pos = str->find(from, start_pos)) != std::string::npos) {
+        str->replace(start_pos, from.length(), to);
         start_pos += to.length();
     }
 }
 
 std::string fix_return(std::string input)
 {
-    replace_all(input, "\n", "\\n");
+    replace_all(&input, "\n", "\\n");
     return input;
 }
 
@@ -43,7 +41,7 @@ std::ostringstream CSVBuilder::build(const TsPOD &ts) const
             oss << "\"" << c.name << "\"" << sep;
             oss << "\"" << fix_return(d.source) << "\"" << sep;
             oss << "\"" << fix_return(d.tr) << "\"" << sep;
-            for (unsigned short j = 0; j < ts.max_locations; ++j) {
+            for (uint16_t j = 0; j < ts.max_locations; ++j) {
                 if (j <= d.locations.size() - 1) {
                     oss << "\"" << d.locations[j].path << " - "
                         << d.locations[j].line << "\"";
