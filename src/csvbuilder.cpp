@@ -21,8 +21,7 @@ std::string fix_return(std::string input)
     return input;
 }
 
-std::ostringstream CSVBuilder::build(const TsPOD &ts,
-                                     unsigned short max_locations) const
+std::ostringstream CSVBuilder::build(const TsPOD &ts) const
 {
     std::ostringstream oss;
     oss << "\"" << "context" << "\"" << sep
@@ -30,7 +29,7 @@ std::ostringstream CSVBuilder::build(const TsPOD &ts,
         << "\"" << "translation" << "\"" << sep
         << "\"" << "location" << "\"" << sep;
 
-    for (int var = 0; var < max_locations - 1; ++var) {
+    for (int var = 0; var < ts.max_locations - 1; ++var) {
         oss << "\"" << "location" << "\"" << sep;
     }
 
@@ -44,7 +43,7 @@ std::ostringstream CSVBuilder::build(const TsPOD &ts,
             oss << "\"" << c.name << "\"" << sep;
             oss << "\"" << fix_return(d.source) << "\"" << sep;
             oss << "\"" << fix_return(d.tr) << "\"" << sep;
-            for (unsigned short j = 0; j < max_locations; ++j) {
+            for (unsigned short j = 0; j < ts.max_locations; ++j) {
                 if (j <= d.locations.size() - 1) {
                     oss << "\"" << d.locations[j].path << " - "
                         << d.locations[j].line << "\"";

@@ -3,13 +3,9 @@
 #include <fstream>
 #include <sstream>
 
-Writer::Writer(std::string &&name)
-    : name{std::move(name)}
-{}
-
-void Writer::write(std::ostringstream &&oss) const
+void Writer::write(std::ostringstream &&oss, std::string &&output) const
 {
-    std::ofstream file_output(std::move(name));
-    file_output.write(oss.str().c_str(), oss.str().size());
+    std::ofstream file_output(std::move(output));
+    file_output.write(oss.str().c_str(), static_cast<int>(oss.str().size()));
     file_output.close();
 }

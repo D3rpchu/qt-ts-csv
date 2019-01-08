@@ -1,14 +1,11 @@
 #include "converter.hpp"
 
 #include "reader.hpp"
+#include "writer.hpp"
 
-Converter::Converter(std::string &&filename)
-    : _filename(filename)
-      , input{}
-{}
+#include <sstream>
 
-void Converter::convert()
+void Converter::convert(std::string &&filename)
 {
-    Reader reader(_filename);
-    input = reader.read();
+    Writer().write(process(Reader().read(std::move(filename))), "output.csv");
 }

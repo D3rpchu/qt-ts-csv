@@ -3,16 +3,10 @@
 #include <fstream>
 #include <sstream>
 
-Reader::Reader(std::string &&path) : _path{std::move(path)}
-{}
-
-Reader::Reader(const std::string &path) : _path{path}
-{}
-
-std::string Reader::read() const
+std::string Reader::read(std::string &&filename) const
 {
     std::ifstream ifs;
-    ifs.open(_path);
+    ifs.open(filename);
     std::stringstream ss;
     ss << ifs.rdbuf();
     return ss.str();

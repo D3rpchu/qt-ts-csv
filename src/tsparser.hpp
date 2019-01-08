@@ -5,16 +5,9 @@
 class TsParser
 {
 public:
-    TsParser() = default;
-    ~TsParser() = default;
-
-    TsPOD do_it(std::string &&content);
-
-    unsigned short get_max_locations() const noexcept;
+    TsPOD parse(std::string &&content);
 
 private:
-    unsigned short max_locations{0};
-
     void delete_empty_translations(TsPOD *ts) const;
-    void find_max_locations(const TsPOD &ts);
+    unsigned short find_max_locations(const TsPOD &ts);
 };

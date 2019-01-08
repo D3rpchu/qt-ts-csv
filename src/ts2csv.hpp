@@ -4,9 +4,6 @@
 
 class Ts2Csv : public Converter
 {
-public:
-    Ts2Csv() = delete;
-    explicit Ts2Csv(std::string &&filename);
-
-    void convert() override;
+protected:
+    std::ostringstream process(std::string &&data) const override;
 };

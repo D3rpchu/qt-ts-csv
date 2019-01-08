@@ -1,16 +1,16 @@
 #pragma once
 
+#include "tspod.hpp"
+
 #include <string>
 
 class Converter
 {
 public:
-    explicit Converter(std::string &&filename);
     virtual ~Converter() = default;
 
-    virtual void convert();
+    void convert(std::string &&filename);
 
 protected:
-    std::string _filename;
-    std::string input;
+    virtual std::ostringstream process(std::string &&data) const = 0;
 };

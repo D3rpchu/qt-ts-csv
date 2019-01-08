@@ -2,7 +2,7 @@
 
 #include "rapidxml-1.13/rapidxml.hpp"
 
-TsPOD TsParser::do_it(std::string &&content)
+TsPOD TsParser::parse(std::string &&content)
 {
     rapidxml::xml_document<> doc;
     doc.parse<0>(const_cast<char *>(content.c_str()));
@@ -47,13 +47,8 @@ TsPOD TsParser::do_it(std::string &&content)
     }
 
     delete_empty_translations(&ret);
-    find_max_locations(ret);
+    ret.max_locations = find_max_locations(ret);
     return ret;
-}
-
-unsigned short TsParser::get_max_locations() const noexcept
-{
-    return max_locations;
 }
 
 void TsParser::delete_empty_translations(TsPOD *ts) const
@@ -70,11 +65,13 @@ void TsParser::delete_empty_translations(TsPOD *ts) const
     }
 }
 
-void TsParser::find_max_locations(const TsPOD &ts)
+unsigned short TsParser::find_max_locations(const TsPOD &ts)
 {
+    unsigned short ret = 0;
     for (const auto &c : ts) {
-        if (c.translations.front().locations.size() > max_locations) {
-            max_locations = static_cast<unsigned short>(c.translations.front().locations.size());
+        if (c.translations.front().locations.size() > ts.max_locations) {
+            ret = static_cast<unsigned short>(c.translations.front().locations.size());
         }
     }
+    return ret;
 }

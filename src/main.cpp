@@ -19,12 +19,10 @@ int main(int argc,  char **argv)
 
     if (file.find(".ts") != std::string::npos) {
         std::cout << " in csv" << std::endl;
-        Ts2Csv ts2csv(std::move(file));
-        ts2csv.convert();
+        Ts2Csv().convert(std::move(file));
     } else {
         std::cout << " in ts" << std::endl;
-        Csv2Ts csv2ts(std::move(file));
-        csv2ts.convert();
+        Csv2Ts().convert(std::move(file));
     }
 
     std::cout << "terminated" << std::endl;

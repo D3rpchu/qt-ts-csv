@@ -7,11 +7,7 @@
 #include <iostream>
 #include <fstream>
 
-TsBuilder::TsBuilder(TsPOD &&data)
-    : pod{std::move(data)}
-{}
-
-std::ostringstream TsBuilder::build() const
+std::ostringstream TsBuilder::build(TsPOD &&pod) const
 {
     rapidxml::xml_document<> doc;
 
@@ -26,9 +22,9 @@ std::ostringstream TsBuilder::build() const
         auto node = doc.allocate_node(rapidxml::node_element, "context");
         auto name = doc.allocate_node(rapidxml::node_element, "name", d.name.c_str());
         node->append_node(name);
-        for (const auto m : d.translations) {
+        for (const auto &m : d.translations) {
             auto mex = doc.allocate_node(rapidxml::node_element, "message");
-            for (const auto loc : m.locations) {
+            for (const auto &loc : m.locations) {
                 const auto l = doc.allocate_node(rapidxml::node_element, "location");
                 auto str = doc.allocate_string(loc.path.c_str());
                 l->append_attribute(doc.allocate_attribute("filename", str));

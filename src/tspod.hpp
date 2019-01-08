@@ -30,4 +30,5 @@ class TsPOD : public std::vector<Context>
 public:
     std::string language;
     std::string version;
+    unsigned short max_locations;
 };
