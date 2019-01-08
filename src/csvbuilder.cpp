@@ -4,7 +4,8 @@
 
 static const char sep[] = ";";
 
-void replace_all(std::string &str, const std::string &from, const std::string &to)
+void replace_all(std::string &str, const std::string &from,
+                 const std::string &to)
 {
     if (from.empty()) { return; }
     size_t start_pos = 0;
@@ -35,7 +36,7 @@ std::ostringstream CSVBuilder::build(const TsPOD &ts,
 
     oss << "\"" << "version" << "\"" << sep
         << "\"" << "language" << "\"" << sep
-        << std::endl;
+        << "\n";
 
     bool write_ver = true;
     for (const auto &c : ts) {
@@ -45,16 +46,17 @@ std::ostringstream CSVBuilder::build(const TsPOD &ts,
             oss << "\"" << fix_return(d.tr) << "\"" << sep;
             for (unsigned short j = 0; j < max_locations; ++j) {
                 if (j <= d.locations.size() - 1) {
-                    oss << "\"" << d.locations[j].path << " - " << d.locations[j].line << "\"";
+                    oss << "\"" << d.locations[j].path << " - "
+                        << d.locations[j].line << "\"";
                 }
                 oss << sep;
             }
             if (write_ver) {
                 write_ver = false;
                 oss << "\"" << ts.version << "\"" << sep
-                    << "\"" << ts.language << "\"" << sep << std::endl;
+                    << "\"" << ts.language << "\"" << sep << "\n";
             } else {
-                oss << "\"" << "\"" << sep << "\""<< "\"" << sep << std::endl;
+                oss << "\"" << "\"" << sep << "\""<< "\"" << sep << "\n";
             }
         }
     }

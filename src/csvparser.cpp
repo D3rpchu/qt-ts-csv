@@ -25,14 +25,14 @@ TsPOD CsvParser::parse(std::string &&content) const
 
     std::string old_context;
     for (const auto &l : lines) {
-        const auto tokens = split(l, ";");
+        const auto tokens = split(l, "\";");
         Traslation t;
         t.source = tokens.at(Source);
         t.tr = tokens.at(Translation);
         for (size_t var = Path; var < tokens.size() - ExtraRows::Max; ++var) {
             if (tokens.at(var).empty()) {
                 break;
-            }	
+            }
             std::vector<std::string> chunks;
             split1(tokens.at(var), chunks);
             Location l;
@@ -43,7 +43,9 @@ TsPOD CsvParser::parse(std::string &&content) const
 
         if (l == lines.front()) {
             ret.language = tokens.at(tokens.size() - 1 - ExtraRows::Language);
+            ret.language.erase(0, 1);
             ret.version = tokens.at(tokens.size() - 1 - ExtraRows::Version);
+            ret.version = ret.version.substr(ret.version.find("\"") + 1);
         }
 
         if (old_context == tokens.at(Context)) {
