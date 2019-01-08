@@ -71,7 +71,7 @@ uint16_t TsParser::find_max_locations(const TsPOD &ts)
 {
     uint16_t ret = 0;
     for (const auto &c : ts) {
-        if (c.translations.front().locations.size() > ts.max_locations) {
+        if (c.translations.front().locations.size() > ret) {
             ret = static_cast<uint16_t>(c.translations.front().locations.size());
         }
     }
