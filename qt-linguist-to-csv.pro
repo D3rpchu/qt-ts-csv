@@ -14,7 +14,8 @@ SOURCES += \
     src/csv2ts.cpp \
     src/converter.cpp \
     src/csvparser.cpp \
-    src/tsbuilder.cpp
+    src/tsbuilder.cpp \
+    src/version.cpp
 
 HEADERS += \
     src/rapidxml-1.13/rapidxml.hpp \
@@ -30,4 +31,5 @@ HEADERS += \
     src/csv2ts.hpp \
     src/converter.hpp \
     src/csvparser.hpp \
-    src/tsbuilder.hpp
+    src/tsbuilder.hpp \
+    src/version.hpp

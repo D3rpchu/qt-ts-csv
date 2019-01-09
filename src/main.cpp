@@ -1,10 +1,13 @@
-#include "ts2csv.hpp"
+#include "version.hpp"
 #include "csv2ts.hpp"
+#include "ts2csv.hpp"
 
 #include <iostream>
 
 int main(int argc,  char **argv)
 {
+    std::cout << "{ qt-ts-csv } version "
+              << Version::current().as_string() << std::endl;
     if (argc <= 1) {
         std::cerr << "no argumets" << std::endl;
         return -1;
