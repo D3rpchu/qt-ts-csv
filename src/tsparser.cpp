@@ -48,8 +48,21 @@ TsPOD TsParser::parse(std::string &&content)
     }
 
     delete_empty_translations(&ret);
+    delete_empty_context(&ret);
     ret.max_locations = find_max_locations(ret);
     return ret;
+}
+
+void TsParser::delete_empty_context(TsPOD *ts) const
+{
+    size_t i = 0;
+    while (i < ts->size()) {
+        if (ts->at(i).translations.empty()) {
+            ts->erase(ts->cbegin() + static_cast<int32_t>(i));
+            continue;
+        }
+        ++i;
+    }
 }
 
 void TsParser::delete_empty_translations(TsPOD *ts) const
@@ -59,7 +72,7 @@ void TsParser::delete_empty_translations(TsPOD *ts) const
         while (i < c.translations.size()) {
             if (c.translations[i].locations.empty()) {
                 c.translations.erase(c.translations.begin() +
-                                     static_cast<int64_t>(i));
+                                     static_cast<int32_t>(i));
                 continue;
             }
             ++i;
