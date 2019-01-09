@@ -6,13 +6,15 @@
 int main(int argc,  char **argv)
 {
     if (argc <= 1) {
-        throw std::logic_error("no argumets");
+        std::cerr << "no argumets" << std::endl;
+        return -1;
     }
 
     std::string file(argv[1]);
     if (file.find(".ts") != std::string::npos &&
         file.find(".csv") != std::string::npos) {
-        throw std::logic_error("file not supported");
+        std::cerr <<  "file not supported" << std::endl;
+        return -2;
     }
 
     std::cout << "converting file " << file;
