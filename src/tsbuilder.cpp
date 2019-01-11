@@ -28,7 +28,8 @@ std::ostringstream TsBuilder::build(TsPOD &&pod) const
                 const auto l = doc.allocate_node(rapidxml::node_element, "location");
                 auto str = doc.allocate_string(loc.path.c_str());
                 l->append_attribute(doc.allocate_attribute("filename", str));
-                l->append_attribute(doc.allocate_attribute("line", std::to_string(loc.line).c_str()));
+                auto line = doc.allocate_string(std::to_string(loc.line).c_str());
+                l->append_attribute(doc.allocate_attribute("line", line));
                 mex->append_node(l);
             }
             const auto s1 = doc.allocate_string(m.source.c_str());
