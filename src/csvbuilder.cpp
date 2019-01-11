@@ -53,7 +53,7 @@ std::ostringstream CSVBuilder::build(const TsPOD &ts) const
                 oss << "\"" << ts.version << "\"" << sep
                     << "\"" << ts.language << "\"" << sep << "\n";
             } else {
-                oss << "\"" << "\"" << sep << "\""<< "\"" << sep << "\n";
+                oss << sep << sep << "\n";
             }
         }
     }
