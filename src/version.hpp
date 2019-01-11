@@ -2,7 +2,7 @@
 
 #include <string>
 
-static const std::string version = "1.0.0";
+static const std::string version = "1.0.1";
 
 class Version
 {
