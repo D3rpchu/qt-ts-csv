@@ -10,5 +10,5 @@ public:
     std::ostringstream build(const TsPOD &ts) const;
 
 private:
-    const std::string sep = ";";
+    const std::string sep = "|";
 };

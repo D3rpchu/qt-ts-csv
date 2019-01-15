@@ -10,7 +10,7 @@ public:
     unsigned line;
 };
 
-class Traslation
+class Translation
 {
 public:
     std::vector<Location> locations;
@@ -22,7 +22,7 @@ class Context
 {
 public:
     std::string name;
-    std::vector<Traslation> translations;
+    std::vector<Translation> translations;
 };
 
 class TsPOD : public std::vector<Context>

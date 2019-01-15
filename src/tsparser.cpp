@@ -19,7 +19,7 @@ TsPOD TsParser::parse(std::string &&content)
             c.name = child->value();
             while (child != nullptr) {
                 auto att = child->first_node();
-                Traslation t;
+                Translation t;
                 while (att != nullptr) {
                     if (att->name() == std::string("location")) {
                         Location loc;
