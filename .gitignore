@@ -35,3 +35,8 @@
 qt-ts-csv.sln
 qt-ts-csv.vcxproj.filters
 qt-ts-csv.vcxproj.user
+
+.qmake.stash
+Makefile
+qt-linguist-to-csv
+
