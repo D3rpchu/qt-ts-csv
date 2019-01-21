@@ -11,13 +11,16 @@ TsPOD TsParser::parse(std::string &&content)
     auto node = doc.first_node();
     ret.version = node->first_attribute()->value();
     ret.language = node->first_attribute()->next_attribute()->value();
-    while (node != nullptr) {
+    while (node != nullptr) { // context
         auto bro = node->first_node();
-        while (bro != nullptr) {
+        while (bro != nullptr) { // name/message
             auto child = bro->first_node();
             Context c;
-            c.name = child->value();
-            while (child != nullptr) {
+            if (child->name() == std::string("name")) {
+                c.name = child->value();
+                child = child->next_sibling();
+            }
+            while (child != nullptr) { // location/source/translation
                 auto att = child->first_node();
                 Translation t;
                 while (att != nullptr) {
@@ -70,7 +73,7 @@ void TsParser::delete_empty_translations(TsPOD *ts) const
     for (auto &c : *ts) {
         size_t i = 0;
         while (i < c.translations.size()) {
-            if (c.translations[i].locations.empty()) {
+            if (c.translations[i].tr.empty()) {
                 c.translations.erase(c.translations.begin() +
                                      static_cast<int32_t>(i));
                 continue;
