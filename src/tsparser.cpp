@@ -11,13 +11,16 @@ TsPOD TsParser::parse(std::string &&content)
     auto node = doc.first_node();
     ret.version = node->first_attribute()->value();
     ret.language = node->first_attribute()->next_attribute()->value();
-    while (node != nullptr) {
+    while (node != nullptr) { // context
         auto bro = node->first_node();
-        while (bro != nullptr) {
+        while (bro != nullptr) { // name/message
             auto child = bro->first_node();
             Context c;
-            c.name = child->value();
-            while (child != nullptr) {
+            if (child->name() == std::string("name")) {
+                c.name = child->value();
+                child = child->next_sibling();
+            }
+            while (child != nullptr) { // location/source/translation
                 auto att = child->first_node();
                 Translation t;
                 while (att != nullptr) {
