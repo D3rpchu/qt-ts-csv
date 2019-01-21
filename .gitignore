@@ -39,4 +39,4 @@ qt-ts-csv.vcxproj.user
 .qmake.stash
 Makefile
 qt-linguist-to-csv
-
+output.csv
