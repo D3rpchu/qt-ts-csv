@@ -73,7 +73,7 @@ void TsParser::delete_empty_translations(TsPOD *ts) const
     for (auto &c : *ts) {
         size_t i = 0;
         while (i < c.translations.size()) {
-            if (c.translations[i].locations.empty()) {
+            if (c.translations[i].tr.empty()) {
                 c.translations.erase(c.translations.begin() +
                                      static_cast<int32_t>(i));
                 continue;
