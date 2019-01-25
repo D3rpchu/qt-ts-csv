@@ -40,3 +40,4 @@ qt-ts-csv.vcxproj.user
 Makefile
 qt-linguist-to-csv
 output.csv
+*.DS*
