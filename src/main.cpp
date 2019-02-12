@@ -31,5 +31,6 @@ int main(int argc,  char **argv)
     }
 
     std::cout << "terminated" << std::endl;
+
     return 0;
 }

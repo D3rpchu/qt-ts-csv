@@ -1,7 +1,5 @@
 #include "tsparser.hpp"
 
-#include "rapidxml-1.13/rapidxml.hpp"
-
 TsPOD TsParser::parse(std::string &&content)
 {
     rapidxml::xml_document<> doc;
@@ -26,16 +24,29 @@ TsPOD TsParser::parse(std::string &&content)
                 while (att != nullptr) {
                     if (att->name() == std::string("location")) {
                         Location loc;
-                        loc.path = att->first_attribute()->value();
-                        const auto v = att->first_attribute()->next_attribute()->value();
-                        loc.line = static_cast<uint16_t>(std::stoi(v));
+                        if (check_attribute_type(att->first_attribute("type"))) {
+                            loc.path = "";
+                            loc.line = NULL;
+                        } else {
+                            loc.path = att->first_attribute()->value();
+                            const auto v = att->first_attribute()->next_attribute()->value();
+                            loc.line = static_cast<uint16_t>(std::stoi(v));
+                        }
                         t.locations.emplace_back(std::move(loc));
                     } else {
                         if (att->name() != std::string("")) {
                             if (att->name() == std::string("source")) {
-                                t.source = att->value();
+                                if (check_attribute_type(att->first_attribute("type"))) {
+                                    t.source = "";
+                                } else {
+                                    t.source = att->value();
+                                }
                             } else {
-                                t.tr = att->value();
+                                if (check_attribute_type(att->first_attribute("type"))) {
+                                    t.tr = "";
+                                } else {
+                                    t.tr = att->value();
+                                }
                             }
                         }
                     }
@@ -92,4 +103,10 @@ uint16_t TsParser::find_max_locations(const TsPOD &ts)
         }
     }
     return ret;
+}
+
+bool TsParser::check_attribute_type(rapidxml::xml_attribute<char> *att) {
+    return att != nullptr &&
+        (att->value() == std::string("vanished") ||
+         att->value() == std::string("osolete"));
 }

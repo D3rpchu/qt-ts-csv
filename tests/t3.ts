@@ -5,7 +5,7 @@
     <name>QObject</name>
     <message>
         <source>Caricamento...</source>
-        <translation type="">Loading...</translation>
+        <translation type="vanished">Loading...</translation>
     </message>
 </context>
 </TS>
