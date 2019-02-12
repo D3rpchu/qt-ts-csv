@@ -8,7 +8,7 @@ std::ostringstream CSVBuilder::build(const TsPOD &ts) const
     oss << "\"" << "context"        << "\"" << sep
         << "\"" << "source"         << "\"" << sep
         << "\"" << "translation"    << "\"" << sep
-        << "\"" << "location"       << "\"" << sep;
+        << "\"" << "location"       << "\""/* << sep*/;
 
     for (int var = 0; var < ts.max_locations - 1; ++var) {
         oss << "\"" << "location" << "\"" << sep;

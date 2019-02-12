@@ -10,7 +10,7 @@
 std::ostringstream TsBuilder::build(TsPOD &&pod) const
 {
     rapidxml::xml_document<> doc;
-
+    auto tmp = pod;
     auto root = doc.allocate_node(rapidxml::node_element, "TS");
     const auto v = doc.allocate_string(pod.version.c_str());
     root->append_attribute(doc.allocate_attribute("version", v));
@@ -47,6 +47,7 @@ std::ostringstream TsBuilder::build(TsPOD &&pod) const
     oss << "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
     oss << "<!DOCTYPE TS>\n";
     oss << doc;
+    std::cout<<doc<<std::endl;
     doc.clear();
     return oss;
 }

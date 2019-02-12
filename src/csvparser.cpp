@@ -18,7 +18,6 @@ void split1(const std::string& str, Container& cont)
 
 TsPOD CsvParser::parse(std::string &&content) const
 {
-    auto tmp = content;
     auto tokens = split(content, "|");
     const auto row_lenght = find_row_items(tokens);
     split_last_cell_from_first_of_next_line(&tokens, row_lenght);
@@ -34,15 +33,15 @@ TsPOD CsvParser::parse(std::string &&content) const
         class Translation t;
         for (size_t j = 0; j + i < row_lenght; ++j) {
             if (j == Context) {
-                c.name = tokens.at(j + i);
+                c.name = tokens.at(j + i).substr(1, tokens.at(j + i).find_last_of("\"") - 1);
             } else if (j == Source) {
-                t.source = tokens.at(j + i);
+                t.source = tokens.at(j + i).substr(1, tokens.at(j + i).find_last_of("\"") - 1);
             } else if (j == Translation) {
-                t.tr = tokens.at(j + i);
+                t.tr = tokens.at(j + i).substr(1, tokens.at(j + i).find_last_of("\"") - 1);
             } else if (j == Language) {
-                ret.language = ret.language.empty() ? tokens.at(j + i) : ret.language;
+                ret.language = ret.language.empty() ? tokens.at(j + i).substr(1, tokens.at(j + i).find_last_of("\"") - 1) : ret.language;
             } else if (j == Version) {
-                ret.version = ret.version.empty() ? tokens.at(j + i) : ret.version;
+                ret.version = ret.version.empty() ? tokens.at(j + i).substr(1, tokens.at(j + i).find_last_of("\"") - 1) : ret.version;
             } else {
                 Location l;
                 std::vector<std::string> loc;
@@ -50,7 +49,7 @@ TsPOD CsvParser::parse(std::string &&content) const
                 if (loc.empty()) {
                     continue;
                 }
-                l.path = loc.front();
+                l.path = loc.front().substr(1);
                 l.line = static_cast<unsigned>(std::stoi(loc.back()));
                 t.locations.emplace_back(std::move(l));
             }
@@ -71,6 +70,7 @@ TsPOD CsvParser::parse(std::string &&content) const
             }
         }
     }
+
     return ret;
 }
 
