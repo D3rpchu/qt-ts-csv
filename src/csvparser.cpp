@@ -1,5 +1,6 @@
 #include "csvparser.hpp"
 
+#include <iostream>
 #include <algorithm>
 #include <iterator>
 #include <sstream>
@@ -17,10 +18,11 @@ void split1(const std::string& str, Container& cont)
 
 TsPOD CsvParser::parse(std::string &&content) const
 {
+    auto tmp = content;
     auto tokens = split(content, "|");
     const auto row_lenght = find_row_items(tokens);
     split_last_cell_from_first_of_next_line(&tokens, row_lenght);
-    tokens.erase(tokens.cbegin(), tokens.cbegin() + static_cast<long long>(row_lenght));
+    tokens.erase(tokens.begin(), tokens.begin() + static_cast<long long>(row_lenght));
     const auto Version = row_lenght - 2;
     const auto Language = row_lenght - 1;
 
@@ -30,7 +32,7 @@ TsPOD CsvParser::parse(std::string &&content) const
     for (size_t i = 0; i < tokens.size(); i += row_lenght) {
         class Context c;
         class Translation t;
-        for (size_t j = 0; j < row_lenght; ++j) {
+        for (size_t j = 0; j + i < row_lenght; ++j) {
             if (j == Context) {
                 c.name = tokens.at(j + i);
             } else if (j == Source) {
@@ -78,11 +80,13 @@ std::vector<std::string> CsvParser::split(std::string content,
     std::vector<std::string> lines;
     size_t pos = 0;
     std::string token;
-    while ((pos = content.find(delimiter)) != std::string::npos) {
+    do {
+        pos = content.find(delimiter);
         token = content.substr(0, pos);
         lines.emplace_back(token);
         content.erase(0, pos + delimiter.length());
-    }
+    } while (pos != std::string::npos);
+
     return lines;
 }
 
@@ -103,8 +107,8 @@ void CsvParser::
     split_last_cell_from_first_of_next_line(std::vector<std::string> *data,
                                             size_t row_lenght) const
 {
-    for (size_t i = row_lenght - 1; i < data->size(); i += row_lenght - 1) {
-        const auto index = i + 0;
+    for (size_t i = row_lenght -1; i < data->size(); i += row_lenght) {
+        const auto index = i;
         if (index >= data->size()) {
             return;
         }
