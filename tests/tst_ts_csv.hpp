@@ -42,25 +42,13 @@ TEST(test_ts_csv, multirow)
     EXPECT_EQ(Reader().read(file_output), output);
 }
 
-TEST(test_ts_csv, typeVanished)
+TEST(test_ts_csv, typeVanishedAndObsolete)
 {
     //type=vanished
     const auto output = "\"context\"|\"source\"|\"translation\"|\"location\"|\"version\"|\"language\"|\n";
 
     const auto file_output = "../../qt-ts-csv/tests/t3.csv";
     Ts2Csv().convert("../../qt-ts-csv/tests/t3.ts", file_output);
-
-    EXPECT_EQ(Reader().read(file_output), output);
-}
-
-TEST(test_ts_csv, typeObsolete)
-{
-    //type=obsolete
-    const auto output = "\"context\"|\"source\"|\"translation\"|\"location\"|\"version\"|\"language\"|\n"
-                        "\"EditableForm\"|\"Scheduler\"|\"\"|1.0|en_GB|";
-
-    const auto file_output = "../../qt-ts-csv/tests/t4.csv";
-    Ts2Csv().convert("../../qt-ts-csv/tests/t4.ts", file_output);
 
     EXPECT_EQ(Reader().read(file_output), output);
 }

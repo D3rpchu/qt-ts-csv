@@ -108,5 +108,5 @@ uint16_t TsParser::find_max_locations(const TsPOD &ts)
 bool TsParser::check_attribute_type(rapidxml::xml_attribute<char> *att) {
     return att != nullptr &&
         (att->value() == std::string("vanished") ||
-         att->value() == std::string("osolete"));
+         att->value() == std::string("obsolete"));
 }

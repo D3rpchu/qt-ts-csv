@@ -8,4 +8,11 @@
         <translation type="vanished">Loading...</translation>
     </message>
 </context>
+<context>
+    <name>SchedulerListPage</name>
+    <message>
+        <source>Scheduler</source>
+        <translation type="obsolete">Scheduler</translation>
+    </message>
+</context>
 </TS>
