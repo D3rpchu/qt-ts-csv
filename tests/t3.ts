@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="en_GB">
+<context>
+    <name>QObject</name>
+    <message>
+        <source>Caricamento...</source>
+        <translation type="">Loading...</translation>
+    </message>
+</context>
+</TS>

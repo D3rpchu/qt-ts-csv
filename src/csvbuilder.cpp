@@ -25,7 +25,7 @@ std::ostringstream CSVBuilder::build(const TsPOD &ts) const
             oss << "\"" << d.tr     << "\"" << sep;
             for (uint16_t j = 0; j < ts.max_locations; ++j) {
                 oss << "\"";
-                if (j <= d.locations.size() - 1) {
+                if (d.locations.size() != 0 && j <= d.locations.size() - 1) {
                     oss << d.locations[j].path << " - " << d.locations[j].line;
                 }
                 oss << "\"" << sep;
