@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdio.h>
 #include <ts2csv.hpp>
 #include <ts2csv.cpp>
 #include <converter.hpp>
@@ -18,37 +19,57 @@
 
 using namespace testing;
 
-TEST(test_ts_csv, t1)
+class test_ts_csv : public ::testing::Test {
+    protected:
+        virtual void TearDown() {
+            remove(n_doc);
+        }
+        virtual void SetUp() {
+            n_doc = nullptr;
+        }
+    public:
+        const char* n_doc;
+};
+
+TEST_F(test_ts_csv, conversion)
 {
     const auto output = "\"context\"|\"source\"|\"translation\"|\"location\"|\"version\"|\"language\"|\n"
                         "\"AddNewForm\"|\"Cottura Manuale\"|\"Manual Cooking\"|\"../../QML/OggettiEditDash/AddNewForm.qml - 21\"|2.1|en_GB|\n";
 
-    const auto file_output = "../../qt-ts-csv/tests/t1.csv";
-    Ts2Csv().convert("../../qt-ts-csv/tests/t1.ts", file_output);
+    n_doc = "../../qt-ts-csv/tests/t1.csv";
+    Ts2Csv().convert("../../qt-ts-csv/tests/t1.ts", n_doc);
 
-    EXPECT_EQ(Reader().read(file_output), output);
+    EXPECT_EQ(Reader().read(n_doc), output);
 }
 
-TEST(test_ts_csv, multirow)
+TEST_F(test_ts_csv, multirow)
 {
-    //multi-row
     const auto output = "\"context\"|\"source\"|\"translation\"|\"location\"|\"version\"|\"language\"|\n"
                         "\"Connettivita\"|\"Impostazioni\n    Wi-fi\"|\"WI-fi\n"
                         "    settings\"|\"../../QML/OggettiSettings/Connettivita.qml - 66\"|2.1|en_GB|\n";
 
-    const auto file_output = "../../qt-ts-csv/tests/t2.csv";
-    Ts2Csv().convert("../../qt-ts-csv/tests/t2.ts", file_output);
+    n_doc = "../../qt-ts-csv/tests/t2.csv";
+    Ts2Csv().convert("../../qt-ts-csv/tests/t2.ts", n_doc);
 
-    EXPECT_EQ(Reader().read(file_output), output);
+    EXPECT_EQ(Reader().read(n_doc), output);
 }
 
-TEST(test_ts_csv, typeVanishedAndObsolete)
+TEST_F(test_ts_csv, typeVanishedAndObsolete)
 {
-    //type=vanished
     const auto output = "\"context\"|\"source\"|\"translation\"|\"location\"|\"version\"|\"language\"|\n";
 
-    const auto file_output = "../../qt-ts-csv/tests/t3.csv";
-    Ts2Csv().convert("../../qt-ts-csv/tests/t3.ts", file_output);
+    n_doc = "../../qt-ts-csv/tests/t3.csv";
+    Ts2Csv().convert("../../qt-ts-csv/tests/t3.ts", n_doc);
 
-    EXPECT_EQ(Reader().read(file_output), output);
+    EXPECT_EQ(Reader().read(n_doc), output);
+}
+
+TEST_F(test_ts_csv, completeConversion)
+{
+    n_doc = "../../qt-ts-csv/tests/t4.csv";
+    const auto file_compare = "../../qt-ts-csv/tests/tc4.csv";
+
+    Ts2Csv().convert("../../qt-ts-csv/tests/t4.ts", n_doc);
+
+    EXPECT_EQ(Reader().read(n_doc), Reader().read(file_compare));
 }
