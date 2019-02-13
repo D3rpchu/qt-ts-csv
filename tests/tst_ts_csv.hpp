@@ -33,7 +33,7 @@ class test_ts_csv : public ::testing::Test {
 
 TEST_F(test_ts_csv, conversion)
 {
-    const auto output = "\"context\"|\"source\"|\"translation\"|\"location\"|\"version\"|\"language\"|\n"
+    const auto output = "\"context\"|\"source\"|\"translation\"|\"location\"|\"version\"|\"language\"\n"
                         "\"AddNewForm\"|\"Cottura Manuale\"|\"Manual Cooking\"|\"../../QML/OggettiEditDash/AddNewForm.qml - 21\"|2.1|en_GB|\n";
 
     n_doc = "../../qt-ts-csv/tests/t1.csv";
@@ -44,7 +44,7 @@ TEST_F(test_ts_csv, conversion)
 
 TEST_F(test_ts_csv, multirow)
 {
-    const auto output = "\"context\"|\"source\"|\"translation\"|\"location\"|\"version\"|\"language\"|\n"
+    const auto output = "\"context\"|\"source\"|\"translation\"|\"location\"|\"version\"|\"language\"\n"
                         "\"Connettivita\"|\"Impostazioni\n    Wi-fi\"|\"WI-fi\n"
                         "    settings\"|\"../../QML/OggettiSettings/Connettivita.qml - 66\"|2.1|en_GB|\n";
 
@@ -56,7 +56,7 @@ TEST_F(test_ts_csv, multirow)
 
 TEST_F(test_ts_csv, typeVanishedAndObsolete)
 {
-    const auto output = "\"context\"|\"source\"|\"translation\"|\"location\"|\"version\"|\"language\"|\n";
+    const auto output = "\"context\"|\"source\"|\"translation\"|\"location\"|\"version\"|\"language\"\n";
 
     n_doc = "../../qt-ts-csv/tests/t3.csv";
     Ts2Csv().convert("../../qt-ts-csv/tests/t3.ts", n_doc);
