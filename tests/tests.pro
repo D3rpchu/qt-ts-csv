@@ -4,9 +4,10 @@ TEMPLATE = app
 CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG += thread
-CONFIG -= qt
 
 INCLUDEPATH += $$PWD/../src
+
+include(../libs/qtxlsxwriter/src/xlsx/qtxlsx.pri)
 
 HEADERS += \
     tst_ts_csv.hpp \
@@ -25,7 +26,9 @@ HEADERS += \
     $$PWD/../src/converter.hpp \
     $$PWD/../src/csvparser.hpp \
     $$PWD/../src/tsbuilder.hpp \
-    $$PWD/../src/version.hpp
+    $$PWD/../src/version.hpp \
+    tst_ts_xlsx.hpp \
+    tst_xlsx_ts.hpp
 
 SOURCES += \
     main.cpp \
@@ -39,3 +42,5 @@ SOURCES += \
     $$PWD/../src/csvparser.cpp \
     $$PWD/../src/tsbuilder.cpp \
     $$PWD/../src/version.cpp
+
+XLSX_NO_LIB

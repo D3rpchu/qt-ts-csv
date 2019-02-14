@@ -1,8 +1,9 @@
 TEMPLATE = app
 CONFIG += console c++17
 CONFIG -= app_bundle
-CONFIG -= qt
 QMAKE_CXXFLAGS_RELEASE *= -O3
+
+include(../libs/qtxlsxwriter/src/xlsx/qtxlsx.pri)
 
 SOURCES += \
     $$PWD/main.cpp \
