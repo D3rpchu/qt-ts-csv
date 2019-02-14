@@ -26,7 +26,7 @@ TsPOD TsParser::parse(std::string &&content)
                         Location loc;
                         if (check_attribute_type(att->first_attribute("type"))) {
                             loc.path = "";
-                            loc.line = NULL;
+                            loc.line = 0;
                         } else {
                             loc.path = att->first_attribute()->value();
                             const auto v = att->first_attribute()->next_attribute()->value();
