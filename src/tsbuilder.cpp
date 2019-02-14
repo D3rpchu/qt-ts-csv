@@ -4,13 +4,11 @@
 #include "rapidxml-1.13/rapidxml_print.hpp"
 
 #include <fstream>
-#include <iostream>
 #include <sstream>
 
 std::ostringstream TsBuilder::build(TsPOD &&pod) const
 {
     rapidxml::xml_document<> doc;
-
     auto root = doc.allocate_node(rapidxml::node_element, "TS");
     const auto v = doc.allocate_string(pod.version.c_str());
     root->append_attribute(doc.allocate_attribute("version", v));

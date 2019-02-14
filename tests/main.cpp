@@ -1,4 +1,5 @@
 #include "tst_ts_csv.hpp"
+#include "tst_csv_ts.hpp"
 
 #include <gtest/gtest.h>
 

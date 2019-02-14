@@ -20,35 +20,41 @@ TsPOD CsvParser::parse(std::string &&content) const
     auto tokens = split(content, "|");
     const auto row_lenght = find_row_items(tokens);
     split_last_cell_from_first_of_next_line(&tokens, row_lenght);
-    tokens.erase(tokens.cbegin(), tokens.cbegin() + static_cast<long long>(row_lenght));
+    tokens.erase(tokens.begin(), tokens.begin() + static_cast<long long>(row_lenght));
     const auto Version = row_lenght - 2;
     const auto Language = row_lenght - 1;
 
     TsPOD ret;
-    const unsigned short field_not_location = 5;
-    ret.max_locations = static_cast<unsigned short>(row_lenght) - field_not_location;
-    for (size_t i = 0; i < tokens.size(); i += row_lenght) {
+    const uint16_t field_not_location = 5;
+    ret.max_locations = static_cast<uint16_t>(row_lenght) - field_not_location;
+    for (size_t i = 0; i < tokens.size() - 1; i += row_lenght) {
         class Context c;
         class Translation t;
         for (size_t j = 0; j < row_lenght; ++j) {
+            auto token = tokens.at(j + i);
+            auto pos_i = token.find_first_of('\"');
+            pos_i = pos_i > token.size() ? 0 : pos_i + 1;
+            auto pos_f = token.find_last_of('\"') - pos_i;
             if (j == Context) {
-                c.name = tokens.at(j + i);
+                c.name = token.substr(pos_i, pos_f);
             } else if (j == Source) {
-                t.source = tokens.at(j + i);
+                t.source = token.substr(pos_i, pos_f);
             } else if (j == Translation) {
-                t.tr = tokens.at(j + i);
+                t.tr = token.substr(pos_i, pos_f);
             } else if (j == Language) {
-                ret.language = ret.language.empty() ? tokens.at(j + i) : ret.language;
+                ret.language = ret.language.empty() ? token.substr(pos_i, pos_f)
+                                                        : ret.language;
             } else if (j == Version) {
-                ret.version = ret.version.empty() ? tokens.at(j + i) : ret.version;
+                ret.version = ret.version.empty() ? token.substr(pos_i, pos_f)
+                                                        : ret.version;
             } else {
                 Location l;
                 std::vector<std::string> loc;
-                split1(tokens.at(j + i), loc);
-                if (loc.empty()) {
+                split1(token, loc);
+                if (loc.empty() || token == ("\"\"")) {
                     continue;
                 }
-                l.path = loc.front();
+                l.path = loc.front().substr(pos_i);
                 l.line = static_cast<unsigned>(std::stoi(loc.back()));
                 t.locations.emplace_back(std::move(l));
             }
@@ -59,16 +65,17 @@ TsPOD CsvParser::parse(std::string &&content) const
 
     for (auto &&r : ret) {
         for (auto &&t : r.translations) {
-            if (t.tr.find("\"") != std::string::npos) {
+            if (t.tr.find('\"') != std::string::npos) {
                 t.tr.erase(t.tr.begin());
                 t.tr.erase(t.tr.end() - 1);
             }
-            if (t.source.find("\"") != std::string::npos) {
+            if (t.source.find('\"') != std::string::npos) {
                 t.source.erase(t.source.begin());
                 t.source.erase(t.source.end() - 1);
             }
         }
     }
+
     return ret;
 }
 
@@ -78,11 +85,13 @@ std::vector<std::string> CsvParser::split(std::string content,
     std::vector<std::string> lines;
     size_t pos = 0;
     std::string token;
-    while ((pos = content.find(delimiter)) != std::string::npos) {
+    do {
+        pos = content.find(delimiter);
         token = content.substr(0, pos);
         lines.emplace_back(token);
         content.erase(0, pos + delimiter.length());
-    }
+    } while (pos != std::string::npos);
+
     return lines;
 }
 
@@ -104,14 +113,17 @@ void CsvParser::
                                             size_t row_lenght) const
 {
     for (size_t i = row_lenght - 1; i < data->size(); i += row_lenght - 1) {
-        const auto index = i + 0;
+        const auto index = i;
         if (index >= data->size()) {
             return;
         }
         std::vector<std::string> v;
         split1(data->at(index), v);
+        if (v.empty()) {
+            continue;
+        }
         data->at(index) = (v.front() == v.back()) ? "" : v.front();
-        data->insert(data->begin() + static_cast<long long>(index + 1), v.back());
+        data->insert(data->begin() + static_cast<int64_t>(index + 1), v.back());
         ++i;
     }
 }
