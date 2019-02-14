@@ -32,11 +32,11 @@ std::ostringstream CSVBuilder::build(const TsPOD &ts) const
             }
             if (write_ver) {
                 write_ver = false;
-                oss << ts.version   << sep
-                    << ts.language  << sep << "\n";
+                oss << "\"" << ts.version  << "\""  << sep
+                    << "\"" <<ts.language  << /*sep <<*/ "\"\n";
             } else {
                 oss << "\"" << "\"" << sep
-                    << "\"" << "\"" << sep << "\n";
+                    << "\"" << "\"" << /*sep <<*/ "\n";
             }
         }
     }

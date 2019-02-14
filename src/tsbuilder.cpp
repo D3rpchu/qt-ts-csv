@@ -4,7 +4,6 @@
 #include "rapidxml-1.13/rapidxml_print.hpp"
 
 #include <fstream>
-#include <iostream>
 #include <sstream>
 
 std::ostringstream TsBuilder::build(TsPOD &&pod) const
@@ -47,7 +46,6 @@ std::ostringstream TsBuilder::build(TsPOD &&pod) const
     oss << "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
     oss << "<!DOCTYPE TS>\n";
     oss << doc;
-    std::cout<<doc<<std::endl;
     doc.clear();
     return oss;
 }
