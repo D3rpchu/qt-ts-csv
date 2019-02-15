@@ -26,16 +26,16 @@ TsPOD CsvParser::parse(std::string &&content) const
     const auto Language = row_lenght - 1;
 
     TsPOD ret;
-    const unsigned short field_not_location = 5;
-    ret.max_locations = static_cast<unsigned short>(row_lenght) - field_not_location;
+    const uint16_t field_not_location = 5;
+    ret.max_locations = static_cast<uint16_t>(row_lenght) - field_not_location;
     for (size_t i = 0; i < tokens.size() - 1; i += row_lenght) {
         class Context c;
         class Translation t;
         for (size_t j = 0; j < row_lenght; ++j) {
             auto token = tokens.at(j + i);
-            auto pos_i = token.find_first_of("\"");
+            auto pos_i = token.find_first_of('\"');
             pos_i = pos_i > token.size() ? 0 : pos_i + 1;
-            auto pos_f = token.find_last_of("\"") - pos_i;
+            auto pos_f = token.find_last_of('\"') - pos_i;
             if (j == Context) {
                 c.name = token.substr(pos_i, pos_f);
             } else if (j == Source) {
@@ -66,11 +66,11 @@ TsPOD CsvParser::parse(std::string &&content) const
 
     for (auto &&r : ret) {
         for (auto &&t : r.translations) {
-            if (t.tr.find("\"") != std::string::npos) {
+            if (t.tr.find('\"') != std::string::npos) {
                 t.tr.erase(t.tr.begin());
                 t.tr.erase(t.tr.end() - 1);
             }
-            if (t.source.find("\"") != std::string::npos) {
+            if (t.source.find('\"') != std::string::npos) {
                 t.source.erase(t.source.begin());
                 t.source.erase(t.source.end() - 1);
             }
@@ -124,7 +124,7 @@ void CsvParser::
             continue;
         }
         data->at(index) = (v.front() == v.back()) ? "" : v.front();
-        data->insert(data->begin() + static_cast<long long>(index + 1), v.back());
+        data->insert(data->begin() + static_cast<int64_t>(index + 1), v.back());
         ++i;
     }
 }
