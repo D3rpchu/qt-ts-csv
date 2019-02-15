@@ -12,6 +12,8 @@ include(../libs/qtxlsxwriter/src/xlsx/qtxlsx.pri)
 HEADERS += \
     tst_ts_csv.hpp \
     tst_csv_ts.hpp \
+    tst_ts_xlsx.hpp \
+    tst_xlsx_ts.hpp \
     $$PWD/../src/rapidxml-1.13/rapidxml.hpp \
     $$PWD/../src/rapidxml-1.13/rapidxml_iterators.hpp \
     $$PWD/../src/rapidxml-1.13/rapidxml_print.hpp \
@@ -27,8 +29,10 @@ HEADERS += \
     $$PWD/../src/csvparser.hpp \
     $$PWD/../src/tsbuilder.hpp \
     $$PWD/../src/version.hpp \
-    tst_ts_xlsx.hpp \
-    tst_xlsx_ts.hpp
+    $$PWD/../src/xlsxbuilder.hpp \
+    $$PWD/../src/xlsxparser.hpp \
+    $$PWD/../src/xlsx2ts.hpp \
+    $$PWD/../src/ts2xlsx.hpp
 
 SOURCES += \
     main.cpp \
@@ -41,6 +45,10 @@ SOURCES += \
     $$PWD/../src/converter.cpp \
     $$PWD/../src/csvparser.cpp \
     $$PWD/../src/tsbuilder.cpp \
-    $$PWD/../src/version.cpp
+    $$PWD/../src/version.cpp \
+    $$PWD/../src/xlsxbuilder.cpp \
+    $$PWD/../src/xlsxparser.cpp \
+    $$PWD/../src/xlsx2ts.cpp \
+    $$PWD/../src/ts2xlsx.cpp
 
 XLSX_NO_LIB

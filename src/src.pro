@@ -16,7 +16,11 @@ SOURCES += \
     $$PWD/converter.cpp \
     $$PWD/csvparser.cpp \
     $$PWD/tsbuilder.cpp \
-    $$PWD/version.cpp
+    $$PWD/version.cpp \
+    xlsxbuilder.cpp \
+    xlsxparser.cpp \
+    xlsx2ts.cpp \
+    ts2xlsx.cpp
 
 HEADERS += \
     $$PWD/rapidxml-1.13/rapidxml.hpp \
@@ -33,4 +37,8 @@ HEADERS += \
     $$PWD/converter.hpp \
     $$PWD/csvparser.hpp \
     $$PWD/tsbuilder.hpp \
-    $$PWD/version.hpp
+    $$PWD/version.hpp \
+    xlsx2ts.hpp \
+    xlsxbuilder.hpp \
+    xlsxparser.hpp \
+    ts2xlsx.hpp

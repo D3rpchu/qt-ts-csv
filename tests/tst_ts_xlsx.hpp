@@ -1,7 +1,6 @@
 #pragma once
 
-#include "xlsxdocument.h"
-
+#include <ts2xlsx.hpp>
 #include <gtest/gtest.h>
 #include <gmock/gmock-matchers.h>
 
@@ -17,8 +16,7 @@ public:
     const char* n_doc;
 };
 
-TEST_F(test_ts_xlsx, t1) {
-    QXlsx::Document x;
-    x.write("A1", "Hello qt!");
-    x.saveAs("Test.xlsx");
+TEST_F(test_ts_xlsx, completeConversione) {
+    n_doc = "../../qt-ts-csv/tests/r1.xlsx";
+    Ts2Xlsx().convert("../../qt-ts-csv/tests/t4.ts", n_doc);
 }

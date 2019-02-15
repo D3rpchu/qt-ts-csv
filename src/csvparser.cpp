@@ -19,7 +19,6 @@ void split1(const std::string& str, Container& cont)
 TsPOD CsvParser::parse(std::string &&content) const
 {
     auto tokens = split(content, "|");
-    auto tmp = content;
     const auto row_lenght = find_row_items(tokens);
     split_last_cell_from_first_of_next_line(&tokens, row_lenght);
     tokens.erase(tokens.begin(), tokens.begin() + static_cast<long long>(row_lenght));
