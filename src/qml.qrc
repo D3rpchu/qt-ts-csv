@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Graphics.qml</file>
+    </qresource>
+</RCC>

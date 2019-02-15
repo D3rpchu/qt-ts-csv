@@ -1,5 +1,6 @@
 #include "csvparser.hpp"
 
+#include <iostream>
 #include <algorithm>
 #include <iterator>
 #include <sstream>
