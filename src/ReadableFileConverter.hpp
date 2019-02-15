@@ -1,15 +1,14 @@
 #pragma once
 
+#include "iconverter.h"
 #include "tspod.hpp"
 
 #include <string>
 
-class Converter
+class ReadableFileConverter : public IConverter
 {
 public:
-    virtual ~Converter() = default;
-
-    void convert(std::string &&filename, std::string &&output);
+    void convert(std::string &&filename, std::string &&output) override;
 
 protected:
     virtual std::ostringstream process(std::string &&data) const = 0;

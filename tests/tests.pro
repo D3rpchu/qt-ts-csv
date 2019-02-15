@@ -25,7 +25,7 @@ HEADERS += \
     $$PWD/../src/csvbuilder.hpp \
     $$PWD/../src/ts2csv.hpp \
     $$PWD/../src/csv2ts.hpp \
-    $$PWD/../src/converter.hpp \
+    $$PWD/../src/ReadableFileConverter.hpp \
     $$PWD/../src/csvparser.hpp \
     $$PWD/../src/tsbuilder.hpp \
     $$PWD/../src/version.hpp \
@@ -42,7 +42,7 @@ SOURCES += \
     $$PWD/../src/csvbuilder.cpp \
     $$PWD/../src/ts2csv.cpp \
     $$PWD/../src/csv2ts.cpp \
-    $$PWD/../src/converter.cpp \
+    $$PWD/../src/ReadableFileConverter.cpp \
     $$PWD/../src/csvparser.cpp \
     $$PWD/../src/tsbuilder.cpp \
     $$PWD/../src/version.cpp \

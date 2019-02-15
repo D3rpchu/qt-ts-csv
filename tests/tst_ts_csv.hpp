@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 #include <ts2csv.hpp>
-#include <converter.hpp>
+#include <ReadableFileConverter.hpp>
 #include <writer.hpp>
 #include <reader.hpp>
 #include <tsparser.hpp>

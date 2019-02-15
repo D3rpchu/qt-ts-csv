@@ -13,7 +13,7 @@ SOURCES += \
     $$PWD/csvbuilder.cpp \
     $$PWD/ts2csv.cpp \
     $$PWD/csv2ts.cpp \
-    $$PWD/converter.cpp \
+    $$PWD/ReadableFileConverter.cpp \
     $$PWD/csvparser.cpp \
     $$PWD/tsbuilder.cpp \
     $$PWD/version.cpp \
@@ -41,4 +41,6 @@ HEADERS += \
     xlsx2ts.hpp \
     xlsxbuilder.hpp \
     xlsxparser.hpp \
-    ts2xlsx.hpp
+    ts2xlsx.hpp \
+    iconverter.h \
+    ReadableFileConverter.hpp

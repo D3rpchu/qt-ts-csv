@@ -1,6 +1,7 @@
 #include "xlsxbuilder.hpp"
 
-void XlsxBuilder::build(const TsPOD &ts, std::string name) const {
+void XlsxBuilder::build(const TsPOD &ts, std::string name) const
+{
     QXlsx::Document doc;
     int col = 1;
     int row = 1;

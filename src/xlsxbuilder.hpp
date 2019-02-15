@@ -5,7 +5,8 @@
 #include "tspod.hpp"
 #include "xlsxdocument.h"
 
-class XlsxBuilder {
+class XlsxBuilder
+{
 public:
     void build(const TsPOD &ts, std::string name) const;
 };
