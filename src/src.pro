@@ -2,6 +2,7 @@ TEMPLATE = app
 CONFIG += console c++17
 CONFIG -= app_bundle
 QMAKE_CXXFLAGS_RELEASE *= -O3
+QT += quick
 
 include(../libs/qtxlsxwriter/src/xlsx/qtxlsx.pri)
 
@@ -20,7 +21,8 @@ SOURCES += \
     xlsxbuilder.cpp \
     xlsxparser.cpp \
     xlsx2ts.cpp \
-    ts2xlsx.cpp
+    ts2xlsx.cpp \
+    converter.cpp
 
 HEADERS += \
     $$PWD/rapidxml-1.13/rapidxml.hpp \
@@ -43,4 +45,8 @@ HEADERS += \
     xlsxparser.hpp \
     ts2xlsx.hpp \
     iconverter.h \
-    ReadableFileConverter.hpp
+    ReadableFileConverter.hpp \
+    converter.h
+
+RESOURCES += \
+    qml.qrc

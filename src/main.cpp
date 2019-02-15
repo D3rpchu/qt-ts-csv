@@ -1,14 +1,13 @@
-#include "version.hpp"
-#include "csv2ts.hpp"
-#include "ts2csv.hpp"
-#include "xlsx2ts.hpp"
-#include "ts2xlsx.hpp"
+#include "converter.h"
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
+#include "QQmlContext"
 
 #include <iostream>
 
 int main(int argc,  char **argv)
 {
-    std::cout << "{ qt-ts-csv } version "
+    /*std::cout << "{ qt-ts-csv } version "
               << Version::current().as_string() << std::endl;
     if (argc <= 2) {
         std::cerr << "no argumets" << std::endl;
@@ -62,5 +61,19 @@ int main(int argc,  char **argv)
 
     std::cout << "terminated" << std::endl;
 
-    return 0;
+    return 0;*/
+
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+
+    QGuiApplication app(argc, argv);
+
+    Converter c;
+
+    QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty(QString("conv"), &c);
+    engine.load(QUrl(QStringLiteral("qrc:Graphics.qml")));
+    if (engine.rootObjects().isEmpty())
+        return -1;
+
+    return app.exec();
 }
