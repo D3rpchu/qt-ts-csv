@@ -27,6 +27,6 @@ TEST_F(test_xlsx_ts, completeConversion) {
     Ts2Xlsx().convert("../../qt-ts-csv/tests/t4.ts", res);
     n_doc = "../../qt-ts-csv/tests/r1.ts";
     Xlsx2Ts().convert(res, n_doc);
-    EXPECT_EQ(Reader().read(n_doc), Reader().read("../../qt-ts-csv/tests/t4.ts"));
+    EXPECT_EQ(Reader().read(n_doc), Reader().read("../../qt-ts-csv/tests/xlsx2ts.ts"));
     remove(res);
 }
