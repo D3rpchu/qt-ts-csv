@@ -3,10 +3,16 @@
 
 QString Converter::convert(QString source, QString dest) const
 {
+    if (source.isEmpty() || dest.isEmpty() ||
+        source.isNull() || dest.isNull()) {
+        return "Selezione file non completata";
+    }
+
+    std::string sep = "///";
     std::string input = source.toStdString();
-    input = input.substr(input.find("C"));
+    input = input.substr(input.find(sep) + sep.length());
     std::string output = dest.toStdString();
-    output = output.substr(output.find("C"));
+    output = output.substr(output.find(sep) + sep.length());
 
     if (input.find(".ts") != std::string::npos &&
         input.find(".csv") != std::string::npos &&
@@ -18,6 +24,7 @@ QString Converter::convert(QString source, QString dest) const
         output.find(".ts") == std::string::npos) {
         return "Conversione non valida";
     }
+
     if (input.find(".ts") != std::string::npos) {
         if (output.find(".csv") != std::string::npos) {
             Ts2Csv().convert(std::move(input), std::move(output));
