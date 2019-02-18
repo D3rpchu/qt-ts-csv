@@ -18,5 +18,3 @@ HEADERS += \
 
 SOURCES += \
     main.cpp \
-
-XLSX_NO_LIB

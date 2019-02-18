@@ -36,7 +36,8 @@ Window {
 
         FileDialog {
             id: f_Source
-            title: "Source"
+            title: "Source file"
+            nameFilters: ["Excel files (*.xlsx)", "Csv files (*.csv)", "Linguist files (*.ts)"]
             folder: StandardPaths.standardLocations(StandardPaths.PicturesLocation)[0]
             onFileChanged: {
                 t_Conv.text = ""
@@ -55,27 +56,65 @@ Window {
             id: t_Dest
             height: 25
             width: 50
-            anchors.left: b_Dest.right
+            anchors.left: b_d_Dest.right
             anchors.verticalCenter: r_Dest.verticalCenter
         }
 
         Button {
-            id: b_Dest
+            id: b_f_Dest
             height: 25
             width: 50
             anchors.verticalCenter: r_Dest.verticalCenter
             anchors.left: r_Dest.left
-            text: "Scegli"
+            text: "File"
             onClicked: f_Dest.open()
         }
 
         FileDialog {
             id: f_Dest
-            title: "Destination"
+            title: "Destination file"
+            nameFilters: ["Excel files (*.xlsx)", "Csv files (*.csv)", "Linguist files (*.ts)"]
             folder: StandardPaths.standardLocations(StandardPaths.PicturesLocation)[0]
-            onFileChanged: {
+            onAccepted: {
                 t_Conv.text = ""
                 t_Dest.text = f_Dest.file
+                cb_Dest.visible = false
+                t_Dest.anchors.left = b_d_Dest.right
+            }
+        }
+
+        Button {
+            id: b_d_Dest
+            height: 25
+            width: 50
+            anchors.verticalCenter: r_Dest.verticalCenter
+            anchors.left: b_f_Dest.right
+            text: "Folder"
+            onClicked:d_Dest.open()
+        }
+
+        FolderDialog {
+            id: d_Dest
+            title: "Destination folder"
+            folder: StandardPaths.standardLocations(StandardPaths.PicturesLocation)[0]
+            onAccepted: {
+                t_Dest.text = d_Dest.folder + qsTr("/output") + cb_Dest.currentText
+                t_Conv.text = ""
+                cb_Dest.visible = true
+                t_Dest.anchors.left = cb_Dest.right
+            }
+        }
+
+        ComboBox {
+            id: cb_Dest
+            visible: false
+            height: 25
+            width: 75
+            anchors.verticalCenter: r_Dest.verticalCenter
+            anchors.left: b_d_Dest.right
+            model: [".ts", ".csv", ".xlsx"];
+            onCurrentTextChanged: {
+                t_Dest.text = d_Dest.folder + qsTr("/output") + cb_Dest.currentText
             }
         }
     }
@@ -97,10 +136,10 @@ Window {
         Button {
             id: b_Conv
             height: 25
-            width: 50
+            width: 75
             anchors.verticalCenter: r_Conv.verticalCenter
             anchors.left: r_Conv.left
-            text: "Scegli"
+            text: "Convert"
             onClicked: t_Conv.text = conv.convert(t_Source.text, t_Dest.text)
         }
     }
