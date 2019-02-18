@@ -33,7 +33,7 @@ HEADERS += \
     $$PWD/../src/xlsxparser.hpp \
     $$PWD/../src/xlsx2ts.hpp \
     $$PWD/../src/ts2xlsx.hpp
-
+    
 SOURCES += \
     main.cpp \
     $$PWD/../src/writer.cpp \
