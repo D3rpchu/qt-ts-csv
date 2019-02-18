@@ -1,9 +1,9 @@
 #pragma once
 
-#include "iconverter.h"
+#include "IConverter.hpp"
 
 class Xlsx2Ts : public IConverter
 {
 public:
-    void convert(std::string &&filename, std::string &&output);
+    void convert(std::string &&filename, std::string &&output) override;
 };

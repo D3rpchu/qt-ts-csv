@@ -1,4 +1,4 @@
-#include "xlsxbuilder.hpp"
+#include "XlsxBuilder.hpp"
 
 void XlsxBuilder::build(const TsPOD &ts, std::string name) const
 {

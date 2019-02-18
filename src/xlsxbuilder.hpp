@@ -1,9 +1,10 @@
 #pragma once
 
-#include <sstream>
-
 #include "TsPod.hpp"
-#include "xlsxdocument.h"
+
+#include <xlsxdocument.h>
+
+#include <sstream>
 
 class XlsxBuilder
 {
