@@ -1,7 +1,7 @@
 #pragma once
 
-#include "iconverter.h"
-#include "tspod.hpp"
+#include "IConverter.hpp"
+#include "TsPod.hpp"
 
 #include <string>
 
