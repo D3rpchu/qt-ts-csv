@@ -1,32 +1,37 @@
 #pragma once
 
 #include "xlsxdocument.h"
-#include "reader.hpp"
-#include "xlsx2ts.hpp"
-#include "ts2xlsx.hpp"
-
-#include <iostream>
+#include "Reader.hpp"
+#include "Xlsx2Ts.hpp"
+#include "Ts2Xlsx.hpp"
 
 #include <gtest/gtest.h>
 #include <gmock/gmock-matchers.h>
 
-class test_xlsx_ts : public ::testing::Test {
+class test_xlsx_ts : public testing::Test
+{
+public:
+    const char *n_doc;
+
 protected:
-    virtual void TearDown() {
+    virtual void TearDown()
+    {
         remove(n_doc);
     }
-    virtual void SetUp() {
+
+    virtual void SetUp()
+    {
         n_doc = nullptr;
     }
-public:
-    const char* n_doc;
 };
 
-TEST_F(test_xlsx_ts, completeConversion) {
+TEST_F(test_xlsx_ts, completeConversion)
+{
     auto res = "../../qt-ts-csv/tests/r1.xlsx";
     Ts2Xlsx().convert("../../qt-ts-csv/tests/t4.ts", res);
     n_doc = "../../qt-ts-csv/tests/r1.ts";
     Xlsx2Ts().convert(res, n_doc);
-    EXPECT_EQ(Reader().read(n_doc), Reader().read("../../qt-ts-csv/tests/t4.ts"));
+    EXPECT_EQ(Reader().read(n_doc),
+              Reader().read("../../qt-ts-csv/tests/t4.ts"));
     remove(res);
 }

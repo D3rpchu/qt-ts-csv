@@ -1,8 +1,8 @@
-#include "ts2xlsx.hpp"
+#include "Ts2Xlsx.hpp"
 
-#include "xlsxbuilder.hpp"
-#include "tsparser.hpp"
-#include "reader.hpp"
+#include "XlsxBuilder.hpp"
+#include "Reader.hpp"
+#include "TsParser.hpp"
 
 void Ts2Xlsx::convert(std::string &&filename, std::string &&output)
 {

@@ -1,11 +1,12 @@
 #pragma once
 
+#include "Version.hpp"
+#include "Csv2Ts.hpp"
+#include "Ts2Csv.hpp"
+#include "Xlsx2Ts.hpp"
+#include "Ts2Xlsx.hpp"
+
 #include <QObject>
-#include "version.hpp"
-#include "csv2ts.hpp"
-#include "ts2csv.hpp"
-#include "xlsx2ts.hpp"
-#include "ts2xlsx.hpp"
 
 class Converter : public QObject
 {

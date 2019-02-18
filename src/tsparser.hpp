@@ -1,6 +1,6 @@
 #pragma once
 
-#include "tspod.hpp"
+#include "TsPod.hpp"
 #include "rapidxml-1.13/rapidxml.hpp"
 
 class TsParser

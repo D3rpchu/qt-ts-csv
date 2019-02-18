@@ -1,4 +1,5 @@
-#include "converter.h"
+#include "Converter.hpp"
+
 #include <iostream>
 
 QString Converter::convert(QString source, QString dest) const

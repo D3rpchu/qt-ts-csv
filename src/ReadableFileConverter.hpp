@@ -1,9 +1,7 @@
 #pragma once
 
-#include "iconverter.h"
-#include "tspod.hpp"
-
-#include <string>
+#include "IConverter.hpp"
+#include "TsPod.hpp"
 
 class ReadableFileConverter : public IConverter
 {

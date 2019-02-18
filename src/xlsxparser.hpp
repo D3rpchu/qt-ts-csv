@@ -1,7 +1,8 @@
 #pragma once
 
-#include "tspod.hpp"
-#include "xlsxdocument.h"
+#include "TsPod.hpp"
+
+#include <xlsxdocument.h>
 
 class XlsxParser
 {

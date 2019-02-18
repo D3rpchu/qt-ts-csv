@@ -1,4 +1,4 @@
-#include "writer.hpp"
+#include "Writer.hpp"
 
 #include <fstream>
 #include <sstream>

@@ -1,28 +1,27 @@
 #pragma once
 
-#include <stdio.h>
-#include <ts2csv.hpp>
-#include <ReadableFileConverter.hpp>
-#include <writer.hpp>
-#include <reader.hpp>
-#include <tsparser.hpp>
-#include <csvbuilder.hpp>
+#include <Ts2Csv.hpp>
+#include <Reader.hpp>
 
 #include <gtest/gtest.h>
 #include <gmock/gmock-matchers.h>
 
-using namespace testing;
+class test_ts_csv : public testing::Test
+{
+public:
+    const char *n_doc;
 
-class test_ts_csv : public ::testing::Test {
 protected:
-    virtual void TearDown() {
+    virtual void TearDown()
+    {
         remove(n_doc);
     }
-    virtual void SetUp() {
+
+    virtual void SetUp()
+    {
         n_doc = nullptr;
     }
-public:
-    const char* n_doc;
+
 };
 
 TEST_F(test_ts_csv, conversion)

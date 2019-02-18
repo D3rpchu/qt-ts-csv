@@ -1,7 +1,7 @@
 #include "ReadableFileConverter.hpp"
 
-#include "reader.hpp"
-#include "writer.hpp"
+#include "Reader.hpp"
+#include "Writer.hpp"
 
 #include <sstream>
 

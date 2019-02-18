@@ -1,10 +1,11 @@
 #pragma once
 
+#include "IConverter.hpp"
+
 #include <string>
-#include "iconverter.h"
 
 class Ts2Xlsx : public IConverter
 {
 public:
-    void convert(std::string &&filename, std::string &&output);
+    void convert(std::string &&filename, std::string &&output) override;
 };

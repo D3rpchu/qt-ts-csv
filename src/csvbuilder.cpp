@@ -1,6 +1,6 @@
-#include "csvbuilder.hpp"
+#include "CsvBuilder.hpp"
 
-#include "tspod.hpp"
+#include "TsPod.hpp"
 
 std::ostringstream CSVBuilder::build(const TsPOD &ts) const
 {
