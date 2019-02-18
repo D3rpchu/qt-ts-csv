@@ -1,16 +1,17 @@
 #pragma once
 
-#include "tspod.hpp"
+#include "Version.hpp"
+#include "Csv2Ts.hpp"
+#include "Ts2Csv.hpp"
+#include "Xlsx2Ts.hpp"
+#include "Ts2Xlsx.hpp"
 
-#include <string>
+#include <QObject>
 
-class Converter
+class Converter : public QObject
 {
+    Q_OBJECT
+
 public:
-    virtual ~Converter() = default;
-
-    void convert(std::string &&filename, std::string &&output);
-
-protected:
-    virtual std::ostringstream process(std::string &&data) const = 0;
+    Q_INVOKABLE QString convert(QString source, QString dest) const;
 };

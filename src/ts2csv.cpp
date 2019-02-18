@@ -1,7 +1,7 @@
-#include "ts2csv.hpp"
+#include "Ts2Csv.hpp"
 
-#include "csvbuilder.hpp"
-#include "tsparser.hpp"
+#include "CsvBuilder.hpp"
+#include "TsParser.hpp"
 
 std::ostringstream Ts2Csv::process(std::string &&data) const
 {

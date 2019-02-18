@@ -1,8 +1,8 @@
 #pragma once
 
-#include "converter.hpp"
+#include "ReadableFileConverter.hpp"
 
-class Csv2Ts : public Converter
+class Csv2Ts : public ReadableFileConverter
 {
 protected:
     std::ostringstream process(std::string &&data) const override;

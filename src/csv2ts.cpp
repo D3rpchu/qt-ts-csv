@@ -1,7 +1,7 @@
-#include "csv2ts.hpp"
+#include "Csv2Ts.hpp"
 
-#include "csvparser.hpp"
-#include "tsbuilder.hpp"
+#include "CsvParser.hpp"
+#include "TsBuilder.hpp"
 
 #include <sstream>
 
