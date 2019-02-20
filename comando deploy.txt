@@ -1,0 +1,1 @@
+windelpoyqt --no-translations --qmldir <qml source path> <where to save everything path>
