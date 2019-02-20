@@ -3,7 +3,7 @@ import QtQuick.Window 2.12
 import Qt.labs.platform 1.1
 import QtQuick.Controls 2.5
 
-Window {
+ApplicationWindow {
     height: 150
     width: 500
     visible: true
