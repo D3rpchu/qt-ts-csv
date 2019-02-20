@@ -1,6 +1,5 @@
 #include "CsvParser.hpp"
 
-#include <iostream>
 #include <algorithm>
 #include <iterator>
 #include <sstream>
@@ -21,7 +20,8 @@ TsPOD CsvParser::parse(std::string &&content) const
     auto tokens = split(content, "|");
     const auto row_lenght = find_row_items(tokens);
     split_last_cell_from_first_of_next_line(&tokens, row_lenght);
-    tokens.erase(tokens.begin(), tokens.begin() + static_cast<long long>(row_lenght));
+    tokens.erase(tokens.begin(), tokens.begin() +
+                                     static_cast<int64_t>(row_lenght));
     const auto Version = row_lenght - 2;
     const auto Language = row_lenght - 1;
 
