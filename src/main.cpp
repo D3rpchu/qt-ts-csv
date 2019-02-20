@@ -3,9 +3,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
 
 int main(int argc,  char **argv)
 {
@@ -23,8 +20,5 @@ int main(int argc,  char **argv)
         return -1;
     }
 
-    auto ret = app.exec();
-    system("PAUSE");
-
-    return ret;
+    return app.exec();
 }

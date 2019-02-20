@@ -4,10 +4,6 @@
 
 QString Converter::convert(QString source, QString dest) const
 {
-    if (source.isEmpty() || dest.isEmpty()) {
-        return "Selezione incompleta";
-    }
-
     std::string sep = "///";
     std::string input = source.toStdString();
     input = input.substr(input.find(sep) + sep.length());
