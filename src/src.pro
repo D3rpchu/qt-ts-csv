@@ -1,10 +1,10 @@
 TEMPLATE = app
-CONFIG += console c++17
+CONFIG += c++17
 CONFIG -= app_bundle
 QMAKE_CXXFLAGS_RELEASE *= -O3
 QT += quick
 
-include($$PWD/../libs/qtxlsxwriter/src/xlsx/qtxlsx.pri)
+include($$PWD/./qtxlsxwriter/src/xlsx/qtxlsx.pri)
 include($$PWD/src.pri)
 
 SOURCES += \

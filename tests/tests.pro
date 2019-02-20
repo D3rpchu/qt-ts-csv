@@ -7,7 +7,7 @@ CONFIG += thread
 
 INCLUDEPATH += $$PWD/../src
 
-include($$PWD/../libs/qtxlsxwriter/src/xlsx/qtxlsx.pri)
+include($$PWD/../src/qtxlsxwriter/src/xlsx/qtxlsx.pri)
 include($$PWD/../src/src.pri)
 
 HEADERS += \
@@ -18,3 +18,5 @@ HEADERS += \
 
 SOURCES += \
     main.cpp \
+
+XLSX_NO_LIB

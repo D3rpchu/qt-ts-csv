@@ -3,7 +3,7 @@ import QtQuick.Window 2.12
 import Qt.labs.platform 1.1
 import QtQuick.Controls 2.5
 
-Window {
+ApplicationWindow {
     height: 150
     width: 500
     visible: true
@@ -30,7 +30,7 @@ Window {
             width: 50
             anchors.left: r_Source.left
             anchors.verticalCenter: r_Source.verticalCenter
-            text: "Scegli"
+            text: "File"
             onClicked: f_Source.open()
         }
 
@@ -144,4 +144,3 @@ Window {
         }
     }
 }
-

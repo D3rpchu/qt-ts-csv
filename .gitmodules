@@ -1,7 +1,3 @@
 [submodule "libs/googletests"]
 	path = libs/googletests
 	url = https://github.com/google/googletest.git
-
-[submodule "libs/qtxlsxwriter"]
-	path = libs/qtxlsxwriter
-	url = https://github.com/dbzhang800/QtXlsxWriter.git

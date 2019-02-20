@@ -4,10 +4,11 @@
 
 QString Converter::convert(QString source, QString dest) const
 {
+    std::string sep = "///";
     std::string input = source.toStdString();
-    input = input.substr(input.find("C"));
+    input = input.substr(input.find(sep) + sep.length());
     std::string output = dest.toStdString();
-    output = output.substr(output.find("C"));
+    output = output.substr(output.find(sep) + sep.length());
 
     if (input.find(".ts") != std::string::npos &&
         input.find(".csv") != std::string::npos &&
