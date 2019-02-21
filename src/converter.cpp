@@ -4,6 +4,10 @@
 
 QString Converter::convert(QString source, QString dest) const
 {
+    if (source.isEmpty() || dest.isEmpty()) {
+        return "Empty arguments";
+    }
+
     std::string sep = "///";
     std::string input = source.toStdString();
     input = input.substr(input.find(sep) + sep.length());
@@ -13,12 +17,12 @@ QString Converter::convert(QString source, QString dest) const
     if (input.find(".ts") != std::string::npos &&
         input.find(".csv") != std::string::npos &&
         input.find(".xlsx") != std::string::npos) {
-        return "Estensione non valida";
+        return "Not valid extention";
     }
 
     if (input.find(".xlsx") != std::string::npos &&
         output.find(".ts") == std::string::npos) {
-        return "Conversione non valida";
+        return "Not valid conversion";
     }
     if (input.find(".ts") != std::string::npos) {
         if (output.find(".csv") != std::string::npos) {
@@ -26,20 +30,20 @@ QString Converter::convert(QString source, QString dest) const
         } else if (output.find(".xlsx") != std::string::npos) {
             Ts2Xlsx().convert(std::move(input), std::move(output));
         } else {
-            return "Conversione non valida";
+            return "Not valid conversion";
         }
     } else if (input.find(".csv") != std::string::npos){
         if (output.find(".ts") != std::string::npos) {
             Csv2Ts().convert(std::move(input), std::move(output));
         } else {
-            return "Conversione non valida";
+            return "Not valid conversion";
         }
     } else {
         if (output.find(".ts") != std::string::npos) {
             Xlsx2Ts().convert(std::move(input), std::move(output));
         } else {
-            return "Conversione non valida";
+            return "Not valid conversion";
         }
     }
-    return "Conversione eseguita";
+    return "Conversion terminated";
 }

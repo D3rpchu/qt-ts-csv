@@ -6,6 +6,13 @@ import QtQuick.Controls 2.5
 ApplicationWindow {
     height: 150
     width: 500
+
+    maximumHeight: height
+    maximumWidth: width
+
+    minimumHeight: height
+    minimumWidth: width
+
     visible: true
     title: qsTr("Converter")
 
