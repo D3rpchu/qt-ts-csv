@@ -2,7 +2,7 @@
 A tool to generate csv and xlsx file from qt ts file and vice versa
 
 ## Build
-I used qmake systems and QtCreator as IDE.
+I used qmake systems and QtCreator as IDE.  
 The build directory have to be on the same lavel as the repo one.
 The build directoy have to be named "build-qt-ts-csv".
 
