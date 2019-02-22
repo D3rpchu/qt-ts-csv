@@ -37,7 +37,7 @@ ApplicationWindow {
             width: 50
             anchors.left: r_Source.left
             anchors.verticalCenter: r_Source.verticalCenter
-            text: "File"
+            text: "Source file"
             onClicked: f_Source.open()
         }
 
@@ -73,7 +73,7 @@ ApplicationWindow {
             width: 50
             anchors.verticalCenter: r_Dest.verticalCenter
             anchors.left: r_Dest.left
-            text: "File"
+            text: "Destination fil"
             onClicked: f_Dest.open()
         }
 
@@ -96,7 +96,7 @@ ApplicationWindow {
             width: 50
             anchors.verticalCenter: r_Dest.verticalCenter
             anchors.left: b_f_Dest.right
-            text: "Folder"
+            text: "Destination folder"
             onClicked:d_Dest.open()
         }
 

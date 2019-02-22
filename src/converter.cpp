@@ -21,12 +21,12 @@ QString Converter::convert(const QString &source,
     if (input.find(".ts") != std::string::npos &&
         input.find(".csv") != std::string::npos &&
         input.find(".xlsx") != std::string::npos) {
-        return "Not valid extention";
+        return "Invalid extention";
     }
 
     if (input.find(".xlsx") != std::string::npos &&
         output.find(".ts") == std::string::npos) {
-        return "Not valid conversion";
+        return "Invalid conversion";
     }
     if (input.find(".ts") != std::string::npos) {
         if (output.find(".csv") != std::string::npos) {
@@ -34,19 +34,19 @@ QString Converter::convert(const QString &source,
         } else if (output.find(".xlsx") != std::string::npos) {
             Ts2Xlsx().convert(std::move(input), std::move(output));
         } else {
-            return "Not valid conversion";
+            return "Invalid conversion";
         }
     } else if (input.find(".csv") != std::string::npos){
         if (output.find(".ts") != std::string::npos) {
             Csv2Ts().convert(std::move(input), std::move(output));
         } else {
-            return "Not valid conversion";
+            return "Invalid conversion";
         }
     } else {
         if (output.find(".ts") != std::string::npos) {
             Xlsx2Ts().convert(std::move(input), std::move(output));
         } else {
-            return "Not valid conversion";
+            return "Invalid conversion";
         }
     }
     return "Conversion terminated";
