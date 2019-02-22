@@ -45,7 +45,7 @@ ApplicationWindow {
             id: f_Source
             title: "Source file"
             nameFilters: ["Excel files (*.xlsx)", "Csv files (*.csv)", "Linguist files (*.ts)"]
-            folder: StandardPaths.standardLocations(StandardPaths.PicturesLocation)[0]
+            folder: StandardPaths.standardLocations(StandardPaths.DesktopLocation)[0]
             onFileChanged: {
                 t_Conv.text = ""
                 t_Source.text = f_Source.file
@@ -81,7 +81,7 @@ ApplicationWindow {
             id: f_Dest
             title: "Destination file"
             nameFilters: ["Excel files (*.xlsx)", "Csv files (*.csv)", "Linguist files (*.ts)"]
-            folder: StandardPaths.standardLocations(StandardPaths.PicturesLocation)[0]
+            folder: StandardPaths.standardLocations(StandardPaths.DesktopLocation)[0]
             onAccepted: {
                 t_Conv.text = ""
                 t_Dest.text = f_Dest.file
@@ -103,7 +103,7 @@ ApplicationWindow {
         FolderDialog {
             id: d_Dest
             title: "Destination folder"
-            folder: StandardPaths.standardLocations(StandardPaths.PicturesLocation)[0]
+            folder: StandardPaths.standardLocations(StandardPaths.DesktopLocation)[0]
             onAccepted: {
                 t_Dest.text = d_Dest.folder + qsTr("/output") + cb_Dest.currentText
                 t_Conv.text = ""
