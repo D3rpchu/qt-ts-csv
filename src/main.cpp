@@ -15,7 +15,7 @@ int main(int argc,  char **argv)
     Converter c;
     engine.rootContext()->setContextProperty(QString("conv"), &c);
 
-    engine.load(QUrl(QStringLiteral("qrc:/Graphics.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:Graphics.qml")));
     if (engine.rootObjects().isEmpty()) {
         return -1;
     }

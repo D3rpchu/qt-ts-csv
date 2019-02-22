@@ -1,12 +1,8 @@
 #include "Converter.hpp"
 
-#include "Csv2Ts.hpp"
-#include "Ts2Csv.hpp"
-#include "Ts2Xlsx.hpp"
-#include "Xlsx2Ts.hpp"
+#include <iostream>
 
-QString Converter::convert(const QString &source,
-                           const QString &dest) const
+QString Converter::convert(QString source, QString dest) const
 {
     if (source.isEmpty() || dest.isEmpty()) {
         return "Empty arguments";
@@ -51,4 +47,3 @@ QString Converter::convert(const QString &source,
     }
     return "Conversion terminated";
 }
-
