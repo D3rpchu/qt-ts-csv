@@ -11,8 +11,8 @@ Launch the program "qt-ts-csv.exe".
 Click the button "Source file"
 and select the source file in the Filedialog 
 (supported extentions: .ts, .xlsx, .csv).  
-Click the button "Source file" 
-and select the source file in the FileDialog 
+Click the button "Destination file" 
+and select the destination file in the FileDialog 
 	(supported extentions: .ts, .xlsx, .csv).  
 Otherwise 
 	click the button "Destination Forder"
