@@ -5,18 +5,14 @@
 #include "Ts2Xlsx.hpp"
 #include "Xlsx2Ts.hpp"
 
-QString Converter::convert(const QString &source,
-                           const QString &dest) const
+QString Converter::convert() const
 {
-    if (source.isEmpty() || dest.isEmpty()) {
+    std::string input = source;
+    std::string output = dest;
+
+    if (input.empty() || output.empty()) {
         return "Empty arguments";
     }
-
-    std::string sep = "///";
-    std::string input = source.toStdString();
-    input = input.substr(input.find(sep) + sep.length());
-    std::string output = dest.toStdString();
-    output = output.substr(output.find(sep) + sep.length());
 
     if (input.find(".ts") != std::string::npos &&
         input.find(".csv") != std::string::npos &&
@@ -52,3 +48,18 @@ QString Converter::convert(const QString &source,
     return "Conversion terminated";
 }
 
+QString Converter::setSource(const QString &source)
+{
+    std::string sep = "///";
+    std::string input = source.toStdString();
+    this->source = input.substr(input.find(sep) + sep.length());
+    return QString::fromStdString(this->source);
+}
+
+QString Converter::setDest(const QString &dest)
+{
+    std::string sep = "///";
+    std::string input = dest.toStdString();
+    this->dest = input.substr(input.find(sep) + sep.length());
+    return QString::fromStdString(this->dest);
+}
