@@ -2,16 +2,16 @@ import QtQuick 2.0
 import QtQuick.Window 2.11
 import Qt.labs.platform 1.0
 import QtQuick.Controls 2.4
+import QtQuick.Layouts 1.3
 
 ApplicationWindow {
     height: 150
-    width: 500
+    width: 600
 
     maximumHeight: height
-    maximumWidth: width
 
     minimumHeight: height
-    minimumWidth: width
+    minimumWidth: 500
 
     visible: true
     title: qsTr("Converter")
@@ -26,7 +26,7 @@ ApplicationWindow {
         Text {
             id: t_Source
             height: 25
-            width: 50
+            Layout.fillWidth: true
             anchors.left: b_Source.right
             anchors.verticalCenter: r_Source.verticalCenter
         }
@@ -34,10 +34,10 @@ ApplicationWindow {
         Button {
             id: b_Source
             height: 25
-            width: 50
+            Layout.fillWidth: true
             anchors.left: r_Source.left
             anchors.verticalCenter: r_Source.verticalCenter
-            text: "File"
+            text: "Source file"
             onClicked: f_Source.open()
         }
 
@@ -48,7 +48,7 @@ ApplicationWindow {
             folder: StandardPaths.standardLocations(StandardPaths.DesktopLocation)[0]
             onFileChanged: {
                 t_Conv.text = ""
-                t_Source.text = f_Source.file
+                t_Source.text = conv.setSource(f_Source.file)
             }
         }
     }
@@ -62,18 +62,18 @@ ApplicationWindow {
         Text {
             id: t_Dest
             height: 25
-            width: 50
-            anchors.left: b_d_Dest.right
+            Layout.fillWidth: true
+            anchors.left: cb_Dest.right
             anchors.verticalCenter: r_Dest.verticalCenter
         }
 
         Button {
             id: b_f_Dest
             height: 25
-            width: 50
+            Layout.fillWidth: true
             anchors.verticalCenter: r_Dest.verticalCenter
             anchors.left: r_Dest.left
-            text: "File"
+            text: "Destination file"
             onClicked: f_Dest.open()
         }
 
@@ -84,7 +84,7 @@ ApplicationWindow {
             folder: StandardPaths.standardLocations(StandardPaths.DesktopLocation)[0]
             onAccepted: {
                 t_Conv.text = ""
-                t_Dest.text = f_Dest.file
+                t_Dest.text = conv.setDest(f_Dest.file)
                 cb_Dest.visible = false
                 t_Dest.anchors.left = b_d_Dest.right
             }
@@ -93,11 +93,11 @@ ApplicationWindow {
         Button {
             id: b_d_Dest
             height: 25
-            width: 50
             anchors.verticalCenter: r_Dest.verticalCenter
             anchors.left: b_f_Dest.right
-            text: "Folder"
+            text: "Destination folder"
             onClicked:d_Dest.open()
+            Layout.fillWidth: true
         }
 
         FolderDialog {
@@ -105,8 +105,9 @@ ApplicationWindow {
             title: "Destination folder"
             folder: StandardPaths.standardLocations(StandardPaths.DesktopLocation)[0]
             onAccepted: {
-                t_Dest.text = d_Dest.folder + qsTr("/output") + cb_Dest.currentText
                 t_Conv.text = ""
+                t_Dest.text = conv.setDest(d_Dest.folder + qsTr("/output") +
+                                           cb_Dest.currentText)
                 cb_Dest.visible = true
                 t_Dest.anchors.left = cb_Dest.right
             }
@@ -114,14 +115,15 @@ ApplicationWindow {
 
         ComboBox {
             id: cb_Dest
-            visible: false
+            visible: true
             height: 25
-            width: 75
+            Layout.fillWidth: true
             anchors.verticalCenter: r_Dest.verticalCenter
             anchors.left: b_d_Dest.right
             model: [".ts", ".csv", ".xlsx"];
             onCurrentTextChanged: {
-                t_Dest.text = d_Dest.folder + qsTr("/output") + cb_Dest.currentText
+                t_Dest.text = conv.setDest(d_Dest.folder + qsTr("/output") +
+                                           cb_Dest.currentText)
             }
         }
     }
@@ -135,7 +137,7 @@ ApplicationWindow {
         Text {
             id: t_Conv
             height: 25
-            width: 50
+            Layout.fillWidth: true
             anchors.left: b_Conv.right
             anchors.verticalCenter: r_Conv.verticalCenter
         }
@@ -143,11 +145,11 @@ ApplicationWindow {
         Button {
             id: b_Conv
             height: 25
-            width: 75
+            Layout.fillWidth: true
             anchors.verticalCenter: r_Conv.verticalCenter
             anchors.left: r_Conv.left
             text: "Convert"
-            onClicked: t_Conv.text = conv.convert(t_Source.text, t_Dest.text)
+            onClicked: t_Conv.text = conv.convert()
         }
     }
 }

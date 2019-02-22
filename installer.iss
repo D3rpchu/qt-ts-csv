@@ -21,7 +21,7 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
-LicenseFile=C:\Users\prog1\Desktop\qt-ts-csv\LICENSE
+LicenseFile=.\LICENSE
 OutputDir=mySetup
 OutputBaseFilename=mySetup
 Compression=lzma
@@ -34,8 +34,8 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\prog1\Desktop\build-qt-linguist-to-csv-Desktop_Qt_5_12_1_MinGW_64_bit-Release\src\release\src.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\prog1\Desktop\build-qt-linguist-to-csv-Desktop_Qt_5_12_1_MinGW_64_bit-Release\src\release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\build-qt-ts-csv\src\release\src.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\build-qt-ts-csv\src\release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
