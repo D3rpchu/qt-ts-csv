@@ -41,3 +41,5 @@ Makefile
 qt-linguist-to-csv
 output.csv
 *.DS*
+
+MySetup
