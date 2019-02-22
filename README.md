@@ -27,14 +27,14 @@ At last click the button "Convert".
 ## Example
 To generate output.csv
 ```
-![alt text](https://raw.githubusercontent.com/D3rpchu/qt-ts-csv/master/doc/ts2csv.png)
+(https://raw.githubusercontent.com/D3rpchu/qt-ts-csv/master/doc/ts2csv.png)
 ```
 To generate output.xlsx
 ```
-![alt text](https://raw.githubusercontent.com/D3rpchu/qt-ts-csv/master/doc/ts2xlsx.png)
+(https://raw.githubusercontent.com/D3rpchu/qt-ts-csv/master/doc/ts2xlsx.png)
 ```
 To generate output.ts
 ```
-![alt text](https://raw.githubusercontent.com/D3rpchu/qt-ts-csv/master/doc/csv2ts.png)
-![alt text](https://raw.githubusercontent.com/D3rpchu/qt-ts-csv/master/doc/xlsx2ts.png)
+(https://raw.githubusercontent.com/D3rpchu/qt-ts-csv/master/doc/csv2ts.png)
+(https://raw.githubusercontent.com/D3rpchu/qt-ts-csv/master/doc/xlsx2ts.png)
 ```
