@@ -7,15 +7,15 @@ I used qmake systems and QtCreator as IDE.
 The build directoy have to be named "build-qt-ts-csv".  
 * It's is required the usage og windoeplyqt (read below)
 
-## Use
-###To generate output.csv  
+## Usage
+## To generate output.csv  
 ![example conversion ts to csv](./doc/ts2csv.png)  
-###To generate output.xlsx  
+### To generate output.xlsx  
 ![example conversion ts to xlsx](./doc/ts2xlsx.png)  
-###To generate output.ts  
+### To generate output.ts  
 ![example conversion csv to ts](./doc/csv2ts.png)  
 ![example conversion xlsx to ts](./doc/xlsx2ts.png)  
-###How to use windeployqt  
+### How to use windeployqt  
 ```
 your\path\to\your\windeployqt\in\your\qt\compiler\bin\windeployqt.exe --qmldir your\path\to\qt-ts-csv\src your\path\to\build-qt-ts-csv\src\release  
 ```
