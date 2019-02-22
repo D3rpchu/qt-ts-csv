@@ -6,7 +6,7 @@ import QtQuick.Layouts 1.3
 
 ApplicationWindow {
     height: 150
-    width: 500
+    width: 600
 
     maximumHeight: height
 
@@ -63,7 +63,7 @@ ApplicationWindow {
             id: t_Dest
             height: 25
             Layout.fillWidth: true
-            anchors.left: b_d_Dest.right
+            anchors.left: cb_Dest.right
             anchors.verticalCenter: r_Dest.verticalCenter
         }
 
@@ -115,7 +115,7 @@ ApplicationWindow {
 
         ComboBox {
             id: cb_Dest
-            visible: false
+            visible: true
             height: 25
             Layout.fillWidth: true
             anchors.verticalCenter: r_Dest.verticalCenter
