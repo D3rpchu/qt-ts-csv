@@ -22,8 +22,8 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
 LicenseFile=.\LICENSE
-OutputDir=mySetup
-OutputBaseFilename=mySetup
+OutputDir=.
+OutputBaseFilename=setup_qt-ts-csv_1.1.0
 Compression=lzma
 SolidCompression=yes
 
