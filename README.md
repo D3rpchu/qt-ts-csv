@@ -25,16 +25,10 @@ At last click the button "Convert".
 	succesfully terminated. 
 
 ## Example
-To generate output.csv
-```
-![example conversion ts to csv](https://raw.githubusercontent.com/D3rpchu/qt-ts-csv/master/doc/ts2csv.png)
-```
-To generate output.xlsx
-```
-![example conversion ts to xlsx](https://raw.githubusercontent.com/D3rpchu/qt-ts-csv/master/doc/ts2xlsx.png)
-```
-To generate output.ts
-```
-![example conversion csv to ts](https://raw.githubusercontent.com/D3rpchu/qt-ts-csv/master/doc/csv2ts.png)
-![example conversion xlsx to ts](https://raw.githubusercontent.com/D3rpchu/qt-ts-csv/master/doc/xlsx2ts.png)
-```
+To generate output.csv  
+![example conversion ts to csv](https://raw.githubusercontent.com/D3rpchu/qt-ts-csv/master/doc/ts2csv.png)  
+To generate output.xlsx  
+![example conversion ts to xlsx](https://raw.githubusercontent.com/D3rpchu/qt-ts-csv/master/doc/ts2xlsx.png)  
+To generate output.ts  
+![example conversion csv to ts](https://raw.githubusercontent.com/D3rpchu/qt-ts-csv/master/doc/csv2ts.png)  
+![example conversion xlsx to ts](https://raw.githubusercontent.com/D3rpchu/qt-ts-csv/master/doc/xlsx2ts.png)  
