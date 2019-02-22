@@ -16,8 +16,9 @@ int main(int argc,  char **argv)
     engine.rootContext()->setContextProperty(QString("conv"), &c);
 
     engine.load(QUrl(QStringLiteral("qrc:Graphics.qml")));
-    if (engine.rootObjects().isEmpty())
+    if (engine.rootObjects().isEmpty()) {
         return -1;
+    }
 
-    return app.exec();
+    return QGuiApplication::exec();
 }
